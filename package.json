@@ -1,0 +1,50 @@
+{
+  "name": "yiye-admin-core",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "eslint --ext .js,.vue,.jsx,.ts,.tsx src"
+  },
+  "dependencies": {
+    "vue": "3.2.37"
+  },
+  "devDependencies": {
+    "@babel/core": "7.18.10",
+    "@babel/eslint-parser": "7.18.9",
+    "@typescript-eslint/eslint-plugin": "5.33.1",
+    "@typescript-eslint/parser": "5.33.1",
+    "@vitejs/plugin-vue": "^3.0.3",
+    "@vue/eslint-config-typescript": "11.0.0",
+    "eslint": "8.22.0",
+    "eslint-config-alloy": "4.6.2",
+    "eslint-plugin-vue": "9.3.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7",
+    "vue-eslint-parser": "9.0.3",
+    "vue-tsc": "^0.39.5"
+  },
+  "engines": {
+    "node": ">=14",
+    "pnpm": ">=7"
+  },
+  "eslintConfig": {
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+       "project": "./tsconfig.json",
+       "js": "@babel/eslint-parser",
+       "jsx": "@babel/eslint-parser",
+       "ts": "@typescript-eslint/parser",
+       "tsx": "@typescript-eslint/parser"
+    },
+    "extends": [
+      "plugin:vue/vue3-recommended"
+    ],
+    "rules": {
+       "@typescript-eslint/prefer-optional-chain": "off"
+    }
+  }
+}
