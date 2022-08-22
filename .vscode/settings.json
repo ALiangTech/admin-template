@@ -1,0 +1,33 @@
+{
+  "eslint.packageManager": "pnpm",
+  "eslint.run": "onSave",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue",
+    "typescript",
+    "typescriptreact"
+  ],
+  "files.autoSave": "afterDelay",
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "stylelint.packageManager": "pnpm",
+  "stylelint.enable": true,
+  "css.lint.duplicateProperties": "error",
+  "css.lint.emptyRules": "error",
+  "css.lint.float": "error",
+  "css.lint.fontFaceProperties": "error",
+  "css.lint.important": "error",
+  "css.lint.zeroUnits": "error",
+  "css.validate": true,
+  "files.exclude": {
+    "**/.husky": true
+  }
+}
