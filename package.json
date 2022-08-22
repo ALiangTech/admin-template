@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "eslint --ext .js,.vue,.jsx,.ts,.tsx src"
+    "lint": "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix"
   },
   "dependencies": {
     "vue": "3.2.37"
@@ -21,7 +21,10 @@
     "@vue/eslint-config-typescript": "11.0.0",
     "eslint": "8.22.0",
     "eslint-config-alloy": "4.6.2",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-vue": "9.3.0",
+    "prettier": "2.7.1",
     "typescript": "^4.6.4",
     "vite": "^3.0.7",
     "vue-eslint-parser": "9.0.3",
@@ -32,10 +35,10 @@
     "pnpm": ">=7"
   },
   "eslintConfig": {
-     "root": true,
+    "root": true,
     "parser": "vue-eslint-parser",
     "parserOptions": {
-      "parser":{
+      "parser": {
         "js": "@babel/eslint-parser",
         "jsx": "@babel/eslint-parser",
         "ts": "@typescript-eslint/parser",
@@ -43,13 +46,15 @@
       }
     },
     "extends": [
-       "alloy",
-       "alloy/vue",
-       "plugin:vue/vue3-recommended",
-       "alloy/typescript"
+      "alloy",
+      "alloy/vue",
+      "plugin:vue/vue3-recommended",
+      "alloy/typescript",
+      "plugin:prettier/recommended",
+      "prettier"
     ],
     "rules": {
-       "@typescript-eslint/prefer-optional-chain": "off"
+      "@typescript-eslint/prefer-optional-chain": "off"
     }
   }
 }
