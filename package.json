@@ -24,6 +24,8 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-vue": "9.3.0",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3",
     "postcss-html": "1.5.0",
     "prettier": "2.7.1",
     "stylelint": "14.11.0",
@@ -40,6 +42,9 @@
   "engines": {
     "node": ">=14",
     "pnpm": ">=7"
+  },
+   "lint-staged": {
+    "src/**/*": "pnpm run lint"
   },
   "eslintConfig": {
     "root": true,
