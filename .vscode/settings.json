@@ -28,6 +28,9 @@
   "css.lint.zeroUnits": "error",
   "css.validate": true,
   "files.exclude": {
-    "**/.husky": true
+    "**/.husky": true,
+    "**/.vscode": true,
+    "tsconfig.json": true,
+    "tsconfig.node.json": true
   }
 }
