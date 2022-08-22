@@ -32,16 +32,21 @@
     "pnpm": ">=7"
   },
   "eslintConfig": {
+     "root": true,
     "parser": "vue-eslint-parser",
     "parserOptions": {
-       "project": "./tsconfig.json",
-       "js": "@babel/eslint-parser",
-       "jsx": "@babel/eslint-parser",
-       "ts": "@typescript-eslint/parser",
-       "tsx": "@typescript-eslint/parser"
+      "parser":{
+        "js": "@babel/eslint-parser",
+        "jsx": "@babel/eslint-parser",
+        "ts": "@typescript-eslint/parser",
+        "tsx": "@typescript-eslint/parser"
+      }
     },
     "extends": [
-      "plugin:vue/vue3-recommended"
+       "alloy",
+       "alloy/vue",
+       "plugin:vue/vue3-recommended",
+       "alloy/typescript"
     ],
     "rules": {
        "@typescript-eslint/prefer-optional-chain": "off"
