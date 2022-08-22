@@ -21,4 +21,5 @@ You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/
 # 禁止使用npm / yarn
 
 # eslint vue ts 校验使用 腾讯 https://github.com/AlloyTeam/eslint-config-alloy/blob/master/README.zh-CN.md
+
 # Prettier  使用官方推荐 
