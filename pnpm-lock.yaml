@@ -14,7 +14,9 @@ specifiers:
   eslint-plugin-vue: 9.3.0
   husky: 8.0.1
   lint-staged: 13.0.3
+  postcss: 8.4.16
   postcss-html: 1.5.0
+  postcss-nesting: 10.1.10
   prettier: 2.7.1
   stylelint: 14.11.0
   stylelint-config-html: 1.1.0
@@ -45,7 +47,9 @@ devDependencies:
   eslint-plugin-vue: 9.3.0_eslint@8.22.0
   husky: 8.0.1
   lint-staged: 13.0.3
+  postcss: 8.4.16
   postcss-html: 1.5.0
+  postcss-nesting: 10.1.10_postcss@8.4.16
   prettier: 2.7.1
   stylelint: 14.11.0
   stylelint-config-html: 1.1.0_35nbotopgds64plu275w6fpq24
@@ -2279,6 +2283,17 @@ packages:
 
   /postcss-media-query-parser/0.2.3:
     resolution: {integrity: sha512-3sOlxmbKcSHMjlUXQZKQ06jOswE7oVkXPxmZdoB1r5l0q6gTFTQSHxNxOrCccElbW7dxNytifNEo8qidX2Vsig==}
+    dev: true
+
+  /postcss-nesting/10.1.10_postcss@8.4.16:
+    resolution: {integrity: sha512-lqd7LXCq0gWc0wKXtoKDru5wEUNjm3OryLVNRZ8OnW8km6fSNUuFrjEhU3nklxXE2jvd4qrox566acgh+xQt8w==}
+    engines: {node: ^12 || ^14 || >=16}
+    peerDependencies:
+      postcss: ^8.2
+    dependencies:
+      '@csstools/selector-specificity': 2.0.2_pnx64jze6bptzcedy5bidi3zdi
+      postcss: 8.4.16
+      postcss-selector-parser: 6.0.10
     dev: true
 
   /postcss-resolve-nested-selector/0.1.1:

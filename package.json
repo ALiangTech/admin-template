@@ -26,7 +26,9 @@
     "eslint-plugin-vue": "9.3.0",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
+    "postcss": "8.4.16",
     "postcss-html": "1.5.0",
+    "postcss-nesting": "10.1.10",
     "prettier": "2.7.1",
     "stylelint": "14.11.0",
     "stylelint-config-html": "1.1.0",
@@ -43,7 +45,7 @@
     "node": ">=14",
     "pnpm": ">=7"
   },
-   "lint-staged": {
+  "lint-staged": {
     "src/**/*": "pnpm run lint"
   },
   "eslintConfig": {
@@ -68,6 +70,11 @@
     "rules": {
       "@typescript-eslint/prefer-optional-chain": "off"
     }
+  },
+  "postcss": {
+    "plugins": [
+      "postcss-nesting"
+    ]
   },
   "stylelint": {
     "root": true,
