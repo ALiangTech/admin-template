@@ -77,15 +77,7 @@
     "extends": [
       "stylelint-config-standard",
       "stylelint-config-prettier",
-      "stylelint-config-html/vue"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.vue"
-        ],
-        "customSyntax": "postcss-html"
-      }
+      "stylelint-config-recommended-vue"
     ]
   }
 }
