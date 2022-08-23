@@ -7,7 +7,7 @@ const count = ref(0);
 </script>
 
 <template>
-  <h1>
+  <h1 class="ml-3">
     {{ msg }}
   </h1>
 
