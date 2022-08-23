@@ -22,6 +22,7 @@
   "stylelint.enable": true,
   "css.validate": false,
   "files.exclude": {
+    "**/.git": false,
     "**/.husky": true,
     "tsconfig.json": true,
     "tsconfig.node.json": true
