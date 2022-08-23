@@ -31,5 +31,7 @@
     "less",
     "postcss",
     "vue"
-  ]
+  ],
+  "unocss.disable": true,
+  "unocss.colorPreview": true,
 }
