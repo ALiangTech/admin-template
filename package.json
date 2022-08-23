@@ -72,12 +72,6 @@
       "@typescript-eslint/prefer-optional-chain": "off"
     }
   },
-  "postcss": {
-    "plugins": [
-      "autoprefixer",
-      "postcss-nesting"
-    ]
-  },
   "stylelint": {
     "root": true,
     "extends": [
