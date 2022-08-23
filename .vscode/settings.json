@@ -20,17 +20,16 @@
   },
   "stylelint.packageManager": "pnpm",
   "stylelint.enable": true,
-  "css.lint.duplicateProperties": "error",
-  "css.lint.emptyRules": "error",
-  "css.lint.float": "error",
-  "css.lint.fontFaceProperties": "error",
-  "css.lint.important": "error",
-  "css.lint.zeroUnits": "error",
-  "css.validate": true,
+  "css.validate": false,
   "files.exclude": {
     "**/.husky": true,
-    "**/.vscode": true,
     "tsconfig.json": true,
     "tsconfig.node.json": true
-  }
+  },
+  "stylelint.validate": [
+    "css",
+    "less",
+    "postcss",
+    "vue"
+  ]
 }
