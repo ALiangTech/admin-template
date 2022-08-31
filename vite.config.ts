@@ -1,29 +1,9 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import autoprefixer from "autoprefixer";
-import postcssNesting from "postcss-nesting";
-import Unocss from "unocss/vite";
-import { createHtmlPlugin } from "vite-plugin-html";
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    vue(),
-    Unocss(),
-    createHtmlPlugin({
-      inject: {
-        data: {
-          title: "yiye-admin-core",
-        },
-      },
-    }),
-  ],
-  server: {
-    host: true,
-  },
-  css: {
-    postcss: {
-      plugins: [autoprefixer, postcssNesting],
-    },
-  },
+import { defineConfig, mergeConfig } from "vite";
+import baseConfig from "./config/vite/base";
+export default defineConfig(async ({ command }) => {
+  const fetchDevConfig = () => import(`./config/vite/${command}`);
+  const config = await fetchDevConfig();
+  return mergeConfig(baseConfig, {
+    ...config.default,
+  });
 });

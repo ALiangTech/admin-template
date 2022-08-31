@@ -11,3 +11,12 @@
 # css unocss
 
 # vite-plugin-html 修改html文件
+
+#
+
+# config 
+   env 环境变量配置
+   vite
+      base 通用基础配置
+      serve 开发环境配置
+      build 生产环境配置
