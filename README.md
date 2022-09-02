@@ -20,3 +20,5 @@
       base 通用基础配置
       serve 开发环境配置
       build 生产环境配置
+
+# pages 存放业务开发模块
