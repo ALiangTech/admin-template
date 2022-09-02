@@ -1,6 +1,6 @@
-import { UserConfig } from "vite";
+import { UserConfigExport } from "vite";
 
-const config: UserConfig = {
+const config: UserConfigExport = {
   server: {
     host: true,
   },

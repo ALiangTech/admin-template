@@ -1,5 +1,5 @@
-import { UserConfig } from "vite";
+import { UserConfigExport } from "vite";
 
-const config: UserConfig = {};
+const config: UserConfigExport = {};
 
 export default config;
