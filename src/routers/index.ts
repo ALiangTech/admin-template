@@ -7,12 +7,12 @@ import {
 } from "vue-router";
 import { App } from "vue";
 // 批量导入static 文件下的路由文件
-type StaticModules = Record<string, Record<string, RouteRecordRaw>>;
-const staticModules: StaticModules = import.meta.glob("./modules/static/*.ts", {
+type batchModules = Record<string, Record<string, RouteRecordRaw>>;
+const staticModules: batchModules = import.meta.glob("./modules/static/*.ts", {
   eager: true,
 });
-// 从批量导入中获取 路由模块数据
-const getRouterFromModules = (modules: StaticModules) => {
+// 从批量导入路由模块中获取 路由模块数据
+const getRouterFromModules = (modules: batchModules) => {
   const routesModule = Object.values(modules);
   const routers = Object.values(routesModule);
   return routers.map((item) => {
