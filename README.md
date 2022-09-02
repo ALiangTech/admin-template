@@ -25,3 +25,8 @@
       build 生产环境配置
 
 # pages 存放业务开发模块
+
+
+
+# router 路由模块 
+# 自动导入 pages下面的router.ts 模块

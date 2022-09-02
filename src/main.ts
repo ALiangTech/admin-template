@@ -1,7 +1,13 @@
-import { createApp } from "vue";
+import { createApp, App } from "vue";
 import "@unocss/reset/tailwind.css";
 import "./style.css";
 import "uno.css";
-import App from "./App.vue";
+import APP from "./App.vue";
+import { MountRouterToApp } from "./routers";
+const app: App = createApp(APP);
 
-createApp(App).mount("#app");
+// 路由挂载
+MountRouterToApp(app);
+
+// 页面挂载
+app.mount("#app");
