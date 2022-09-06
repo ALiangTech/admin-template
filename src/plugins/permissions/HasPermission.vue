@@ -16,7 +16,6 @@ export default defineComponent({
   },
   computed: {
     hasPermission() {
-      console.log(this.permissionCodeSet, "xxxx");
       return this.permissionCodeSet.includes(this.code);
     },
   },

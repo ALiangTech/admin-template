@@ -1,7 +1,7 @@
 import { Plugin, App } from "vue";
 import HasPermission from "./HasPermission.vue";
 import { RouteLocationNormalized, Router } from "vue-router";
-interface Options {
+export interface Options {
   permissionCodeSet: string[];
   router: Router;
   [key: string]: any;
@@ -9,7 +9,6 @@ interface Options {
 type PluginInstallFunction = (app: App, ...options: Options[]) => any;
 const install: PluginInstallFunction = (app, ...options) => {
   const { permissionCodeSet, router } = options[0];
-  console.log(permissionCodeSet, "plugin");
   // 全局权限组件
   app.component("HasPermissionControl", {
     extends: HasPermission,
