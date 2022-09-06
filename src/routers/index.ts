@@ -27,6 +27,8 @@ const routes: RouteRecordRaw[] = [...staticRoutes];
 const options: RouterOptions = {
   history: createWebHistory(),
   routes,
+  strict: true,
+  sensitive: true,
 };
 export const router = createRouter(options);
 
