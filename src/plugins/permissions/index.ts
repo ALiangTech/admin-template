@@ -29,8 +29,8 @@ const install: PluginInstallFunction = (app, ...options) => {
         if (hasPermission) {
           return hasPermission;
         } else {
-          window.alert("暂无访问权限");
-          return !hasPermission;
+          window.alert("账号权限被更新,请重新登录"); // 路由相关权限发生变化
+          return { path: "/login" };
         }
       }
       return true;
