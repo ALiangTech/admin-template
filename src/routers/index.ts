@@ -28,7 +28,7 @@ const options: RouterOptions = {
   history: createWebHistory(),
   routes,
 };
-const router = createRouter(options);
+export const router = createRouter(options);
 
 // 挂载到实例上面
 
@@ -38,6 +38,7 @@ export const MountRouterToApp = (app: App) => {
 };
 
 // 添加导航前的守卫
+
 export const addRouterGuard = (callback: NavigationGuard) => {
   router.beforeEach(callback);
 };

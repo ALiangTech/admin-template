@@ -6,6 +6,9 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 <template>
   <HelloWorld msg="Vite + Vue" />
+  <HasPermissionControl code="xx">
+    <div>有权限</div>
+  </HasPermissionControl>
   <router-view></router-view>
 </template>
 

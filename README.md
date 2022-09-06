@@ -30,3 +30,19 @@
 
 # router 路由模块 
 # 自动导入 pages下面的router.ts 模块
+
+
+
+# 权限相关 权限模块作为一个插件
+
+# 俩方面拦截 一个是页面元素 一个是浏览器路由拦截
+
+# 权限组件 / 权限函数
+
+# 权限码
+
+```TypeScript
+   interface {
+      [key:string]: string
+   }
+```
