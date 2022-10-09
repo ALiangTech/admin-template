@@ -4,6 +4,7 @@ specifiers:
   '@babel/core': 7.18.10
   '@babel/eslint-parser': 7.18.9
   '@stylelint/postcss-css-in-js': 0.38.0
+  '@types/node': 18.8.3
   '@typescript-eslint/eslint-plugin': 5.33.1
   '@typescript-eslint/parser': 5.33.1
   '@unocss/reset': 0.45.12
@@ -51,6 +52,7 @@ devDependencies:
   '@babel/core': 7.18.10
   '@babel/eslint-parser': 7.18.9_7ura6loqb5b2nxcv4w7uypye6y
   '@stylelint/postcss-css-in-js': 0.38.0_wuc352kuwbjfwnfzykq4fs3caq
+  '@types/node': 18.8.3
   '@typescript-eslint/eslint-plugin': 5.33.1_vsoshirnpb7xw6mr7xomgfas2i
   '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
   '@vitejs/plugin-vue': 3.0.3_vite@3.0.8+vue@3.2.37
@@ -478,6 +480,10 @@ packages:
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
+    dev: true
+
+  /@types/node/18.8.3:
+    resolution: {integrity: sha512-0os9vz6BpGwxGe9LOhgP/ncvYN5Tx1fNcd2TM3rD/aCGBkysb+ZWpXEocG24h6ZzOi13+VB8HndAQFezsSOw1w==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
