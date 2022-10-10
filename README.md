@@ -54,7 +54,7 @@
 # 权限码
 
 ```TypeScript
-   interface {
+   interface permission {
       [key:string]: string
    }
 ```
@@ -75,7 +75,11 @@
 # 只做到二级菜单
  
 ```TypeScript
-   interface {
+   interface router {
       routes: RouteRecordRaw[]
    }
 ```
+
+
+
+## 看起来是一个spa  其实是一个mpa 登录和主业务是分开的html业务
