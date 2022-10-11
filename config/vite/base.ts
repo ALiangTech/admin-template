@@ -4,12 +4,15 @@ import postcssNesting from "postcss-nesting";
 import Unocss from "unocss/vite";
 import { UserConfigExport } from "vite";
 import mpa from "vite-plugin-mpa-plus";
+// @ts-ignore
+import vueJsx from "@vitejs/plugin-vue-jsx";
 import path from "path";
 // 通用配置 开发和生产 都需要的配置
 const config: UserConfigExport = {
   plugins: [
     vue(),
     Unocss(),
+    vueJsx(),
     mpa({
       pages: {
         main: {

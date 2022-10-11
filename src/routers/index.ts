@@ -6,13 +6,13 @@ import {
   NavigationGuard,
 } from "vue-router";
 import { App } from "vue";
-// 批量导入static 文件下的路由文件
+// 批量导入src router.ts 文件下的路由文件
 type batchModules = Record<string, Record<string, RouteRecordRaw>>;
-const staticModules: batchModules = import.meta.glob("./modules/static/*.ts", {
+const asyncModules: batchModules = import.meta.glob("./../**/router.ts", {
   eager: true,
 });
 // 从批量导入路由模块中获取 路由模块数据
-const getRouterFromModules = (modules: batchModules) => {
+const getRoutes = (modules: batchModules) => {
   const routesModule = Object.values(modules);
   const routers = Object.values(routesModule);
   return routers.map((item) => {
@@ -20,10 +20,9 @@ const getRouterFromModules = (modules: batchModules) => {
     return module;
   });
 };
-const staticRoutes = getRouterFromModules(staticModules);
+export const asyncRoutes = getRoutes(asyncModules);
 
-const routes: RouteRecordRaw[] = [...staticRoutes];
-
+const routes: RouteRecordRaw[] = [];
 const options: RouterOptions = {
   history: createWebHistory(),
   routes,

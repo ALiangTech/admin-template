@@ -1,5 +1,5 @@
 import { createHttp } from "@/helper";
 
 export default () => {
-  createHttp();
+  createHttp({});
 };

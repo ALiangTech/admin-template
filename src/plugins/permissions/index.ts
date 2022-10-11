@@ -1,8 +1,9 @@
 import { Plugin, App } from "vue";
 import HasPermission from "./HasPermission.vue";
 import { RouteLocationNormalized, Router } from "vue-router";
+export type PermissionCode = string[];
 export interface Options {
-  permissionCodeSet: string[];
+  permissionCodeSet: PermissionCode;
   router: Router;
   [key: string]: any;
 }
