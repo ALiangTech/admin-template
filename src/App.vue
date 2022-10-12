@@ -3,6 +3,7 @@
     <div>有权限</div>
   </HasPermissionControl>
   <Menu></Menu>
+  <span>-----------------</span>
   <router-view></router-view>
 </template>
 <script setup lang="ts">

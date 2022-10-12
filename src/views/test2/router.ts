@@ -1,12 +1,12 @@
 import { RouteRecordRaw } from "vue-router";
 import Test from "@/views/test2/index.vue";
 export const login: RouteRecordRaw = {
-  path: "/test2",
-  name: "test2",
+  path: "/test3",
+  name: "test3",
   meta: {
     code: "xx",
     menu: {
-      label: "test2",
+      label: "test3",
     },
   },
   component: Test,
