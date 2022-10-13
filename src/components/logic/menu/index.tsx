@@ -27,6 +27,16 @@ interface HighlightMenuItemParams {
   router: Router;
 }
 const sessionStorageRoute = useStorage("click-route", [], sessionStorage);
+interface InitRouter {
+  router: Router;
+}
+function initRouterWhenReload({ router }: InitRouter) {
+  const [currentRoutes] = sessionStorageRoute.value;
+  if (currentRoutes) {
+    const { route } = currentRoutes;
+    router.addRoute(route);
+  }
+}
 function createMenuDataFromRoute(params: CreateMenuDataFromRouteParams) {
   const temp: any[] = [];
   const { routes, codes, hidden, parentName, router, parentRoute } = params;
@@ -55,12 +65,17 @@ function createMenuDataFromRoute(params: CreateMenuDataFromRouteParams) {
               onClick: async (e: Event) => {
                 function saveClickRoutesInSessionStorage() {
                   if (parentRoute) {
-                    sessionStorageRoute.value = {
-                      ...parentRoute,
-                      children: [route],
-                    };
+                    sessionStorageRoute.value = [
+                      {
+                        route: {
+                          ...parentRoute,
+                          children: [route],
+                        },
+                        name: route.name,
+                      },
+                    ];
                   } else {
-                    sessionStorageRoute.value = route;
+                    sessionStorageRoute.value = [{ route, name: route.name }];
                   }
                 }
                 // const dom = e.target?.parentElement.nextSibling;
@@ -129,6 +144,7 @@ export default defineComponent({
       router,
       parentRoute: null,
     });
+    initRouterWhenReload({ router });
     return () => {
       return <div>{menu}</div>;
     };
