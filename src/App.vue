@@ -7,5 +7,5 @@
   <router-view></router-view>
 </template>
 <script setup lang="ts">
-import Menu from "@/components/logic/menu/index.tsx";
+import Menu from "@/routers/components/menu/index";
 </script>

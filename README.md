@@ -53,6 +53,9 @@
 
 # 权限码
 
+# 权限变更
+# websocket 通知前端退出系统 重新登录
+
 ```TypeScript
    interface permission {
       [key:string]: string

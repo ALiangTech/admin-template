@@ -6,6 +6,7 @@ import {
   NavigationGuard,
 } from "vue-router";
 import { App } from "vue";
+import { initMenu } from "./components/menu/index";
 // 批量导入src router.ts 文件下的路由文件
 type batchModules = Record<string, Record<string, RouteRecordRaw>>;
 const asyncModules: batchModules = import.meta.glob("./../**/router.ts", {
@@ -34,6 +35,8 @@ export const router = createRouter(options);
 // 挂载到实例上面
 
 export const MountRouterToApp = (app: App) => {
+  // menu init
+  initMenu({ router });
   app.use(router);
   return router.isReady();
 };
