@@ -6,6 +6,7 @@ import {
 } from "vue-router";
 import { App, ref } from "vue";
 import filterPermissionRoutes from "./core/filter-permission-routes";
+import findFirstPermissionRoute from "@/routers/core/find-first-permission-route";
 import createMenuData, { Menu } from "@/routers/core/create-menu-data";
 // 批量导入src router.ts 文件下的路由文件
 type batchModules = Record<string, Record<string, RouteRecordRaw>>;
@@ -24,11 +25,18 @@ const getRoutes = (modules: batchModules) => {
 export const asyncRoutes = getRoutes(asyncModules);
 
 export const menu = ref<Menu[]>([]);
-// no permission
-const noPermissionRoute = {
+export const firstPermissionRoute = ref<RouteRecordRaw>();
+// no permission route
+const noPermissionRoute: RouteRecordRaw = {
   path: "/:pathMatch(.*)*",
-  name: "NotFound",
+  name: "NoPermission",
   component: () => import("./exceptional/no-permission.vue"),
+};
+const rootRoute: RouteRecordRaw = {
+  path: "/",
+  name: "RootPage",
+  component: () => import("./components/root/root.vue"),
+  children: [],
 };
 // 挂载到实例上面
 export const MountRouterToApp = async (app: App) => {
@@ -36,10 +44,14 @@ export const MountRouterToApp = async (app: App) => {
     codes: ["xx"],
     routes: asyncRoutes,
   });
+  firstPermissionRoute.value = findFirstPermissionRoute({
+    routes: hasPermissionRoutes,
+  });
   menu.value = createMenuData({ routes: hasPermissionRoutes });
+  rootRoute.children = hasPermissionRoutes;
   const options: RouterOptions = {
     history: createWebHistory(),
-    routes: [...hasPermissionRoutes, noPermissionRoute],
+    routes: [rootRoute, noPermissionRoute],
     strict: true,
     sensitive: true,
   };

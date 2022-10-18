@@ -29,7 +29,7 @@ export const login: RouteRecordRaw = {
           name: "test4s",
           component: Test4,
           meta: {
-            code: "xx",
+            code: "xsx",
             menu: {
               label: "test4",
             },
