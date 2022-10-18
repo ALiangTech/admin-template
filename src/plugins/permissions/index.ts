@@ -1,15 +1,8 @@
-import { Plugin, App } from "vue";
+import { Plugin } from "vue";
 import HasPermission from "./HasPermission.vue";
-import { RouteLocationNormalized, Router } from "vue-router";
-export type PermissionCode = string[];
-export interface Options {
-  permissionCodeSet: PermissionCode;
-  router: Router;
-  [key: string]: any;
-}
-type PluginInstallFunction = (app: App, ...options: Options[]) => any;
+import { PluginInstallFunction } from "./types";
 const install: PluginInstallFunction = (app, ...options) => {
-  const { permissionCodeSet, router } = options[0];
+  const { permissionCodeSet } = options[0];
   // 全局权限组件
   app.component("HasPermissionControl", {
     extends: HasPermission,
@@ -20,22 +13,6 @@ const install: PluginInstallFunction = (app, ...options) => {
       },
     },
   });
-  // 路由拦截
-  router &&
-    router.beforeEach((to: RouteLocationNormalized) => {
-      const { code } = to.meta;
-      if (code) {
-        // 有code 必须判断权限
-        const hasPermission = permissionCodeSet.includes(code as string);
-        if (hasPermission) {
-          return hasPermission;
-        } else {
-          window.alert("账号权限被更新,请重新登录"); // 路由相关权限发生变化
-          return { path: "/login" };
-        }
-      }
-      return true;
-    });
 };
 export const permission: Plugin = {
   install,

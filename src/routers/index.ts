@@ -3,10 +3,10 @@ import {
   createWebHistory,
   RouterOptions,
   RouteRecordRaw,
-  NavigationGuard,
 } from "vue-router";
-import { App } from "vue";
-import { initMenu } from "./components/menu/index";
+import { App, ref } from "vue";
+import filterPermissionRoutes from "./core/filter-permission-routes";
+import createMenuData, { Menu } from "@/routers/core/create-menu-data";
 // 批量导入src router.ts 文件下的路由文件
 type batchModules = Record<string, Record<string, RouteRecordRaw>>;
 const asyncModules: batchModules = import.meta.glob("./../**/router.ts", {
@@ -23,26 +23,28 @@ const getRoutes = (modules: batchModules) => {
 };
 export const asyncRoutes = getRoutes(asyncModules);
 
-const routes: RouteRecordRaw[] = [];
-const options: RouterOptions = {
-  history: createWebHistory(),
-  routes,
-  strict: true,
-  sensitive: true,
+export const menu = ref<Menu[]>([]);
+// no permission
+const noPermissionRoute = {
+  path: "/:pathMatch(.*)*",
+  name: "NotFound",
+  component: () => import("./exceptional/no-permission.vue"),
 };
-export const router = createRouter(options);
-
 // 挂载到实例上面
-
-export const MountRouterToApp = (app: App) => {
-  // menu init
-  initMenu({ router });
+export const MountRouterToApp = async (app: App) => {
+  const hasPermissionRoutes = filterPermissionRoutes({
+    codes: ["xx"],
+    routes: asyncRoutes,
+  });
+  menu.value = createMenuData({ routes: hasPermissionRoutes });
+  const options: RouterOptions = {
+    history: createWebHistory(),
+    routes: [...hasPermissionRoutes, noPermissionRoute],
+    strict: true,
+    sensitive: true,
+  };
+  const router = createRouter(options);
   app.use(router);
-  return router.isReady();
-};
-
-// 添加导航前的守卫
-
-export const addRouterGuard = (callback: NavigationGuard) => {
-  router.beforeEach(callback);
+  await router.isReady();
+  return { router };
 };

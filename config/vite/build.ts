@@ -1,5 +1,7 @@
 import { UserConfigExport } from "vite";
-
-const config: UserConfigExport = {};
+import visualizerPlugin from "./plugins/visualizer";
+const config: UserConfigExport = {
+  plugins: [visualizerPlugin()],
+};
 
 export default config;
