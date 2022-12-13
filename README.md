@@ -86,3 +86,22 @@
 
 
 ## 看起来是一个spa  其实是一个mpa 登录和主业务是分开的html业务
+
+
+
+
+
+
+## 网络接口统一设置
+
+### 接口data返回规范 默认配置
+
+```typescript
+    interface data {
+      data: Object
+      error: null | array
+    }
+```
+
+### 网络状态非 200 异常全部抛出 
+### 接口返回error 异常全部抛出
