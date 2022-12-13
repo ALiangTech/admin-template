@@ -26,9 +26,9 @@ const config: UserConfigExport = {
           },
         },
         login: {
-          entry: "login/login.ts",
-          filename: "login/index.html",
-          template: "login/index.html",
+          entry: "src/views/login/login.ts",
+          filename: "src/views/login/index.html",
+          template: "src/views/login/index.html",
           inject: {
             data: {
               title: "yiye-admin-core-login",
