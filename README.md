@@ -24,3 +24,7 @@ css 使用[原子css](https://antfu.me/posts/reimagine-atomic-css-zh)方式: [un
 
 **注意**
 ：大版本升级一定要去查看对应版本的注意事项
+如果是X 修改 一定要注意
+X 是主版本号(major)：修改了不兼容的 API
+Y 是次版本号(minor)：新增了向下兼容的功能
+Z 为修订号(patch)：修正了向下兼容的问题
