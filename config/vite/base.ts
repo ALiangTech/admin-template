@@ -43,7 +43,7 @@ const config: UserConfigExport = {
       "@": path.resolve(__dirname, "./../../src"),
     },
   },
-  envDir: "./../env",
+  envDir: "./config/env",
   css: {
     postcss: {
       plugins: [autoprefixer, postcssNesting],

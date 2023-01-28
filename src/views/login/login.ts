@@ -1,4 +1,6 @@
 import { createApp, App } from "vue";
+import "@unocss/reset/tailwind.css";
+import "uno.css";
 import APP from "./LoginPage.vue";
 const app: App = createApp(APP);
 // 页面挂载

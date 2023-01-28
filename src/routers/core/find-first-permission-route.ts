@@ -1,3 +1,4 @@
+// 查找第一个有权限的路由
 import { RouteRecordRaw } from "vue-router";
 
 interface FindFirstPermissionParams {
