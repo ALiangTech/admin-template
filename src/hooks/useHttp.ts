@@ -28,14 +28,15 @@ export default function useHttp<T = serverResponse>(
   init?: RequestInit | undefined
 ) {
   // 发送请求
+  let tempurl = url;
   const send = async () => {
     // 如果URL是 string类型并且没有协议前缀 就加上前缀 VITE_API_BASE_URL
     if (typeof url === "string") {
-      url = isHttpUrl(url) ? url : `${URL_PREFIX}${url}`;
+      tempurl = isHttpUrl(url) ? url : `${URL_PREFIX}${url}`;
     }
     // const { status } = res;
     // 网络故障/被阻止才会标记成reject 其他情况都是resolve
-    const response = await fetch(url, Object.assign(defaultInit, init));
+    const response = await fetch(tempurl, Object.assign(defaultInit, init));
     const [err, data] = await to<T>(response.json());
     console.log("data---%o", data);
     console.log("err---%o", err);

@@ -5,7 +5,12 @@ import {
   RouteRecordRaw,
 } from "vue-router";
 import { App, ref } from "vue";
-import {createMenuData,filterPermissionRoutes,findFirstPermissionRoute, Menu} from '@/routers/core'
+import {
+  createMenuData,
+  filterPermissionRoutes,
+  findFirstPermissionRoute,
+  Menu,
+} from "@/routers/core";
 // 批量导入src router.ts 文件下的路由文件
 type batchModules = Record<string, Record<string, RouteRecordRaw>>;
 const asyncModules: batchModules = import.meta.glob("./../**/router.ts", {
@@ -24,7 +29,7 @@ export const asyncRoutes = getRoutes(asyncModules);
 
 export const menu = ref<Menu[]>([]);
 export const firstPermissionRoute = ref<RouteRecordRaw>();
-// 无权限页面 
+// 无权限页面
 // 当通过url进入 无权限 就跳转无权限页面
 const noPermissionRoute: RouteRecordRaw = {
   path: "/:pathMatch(.*)*",

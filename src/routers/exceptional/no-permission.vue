@@ -6,6 +6,6 @@
 import { useRouter } from "vue-router";
 const router = useRouter();
 const gotoRootPage = () => {
-  router.push({ name: "RootPage" })
+  router.push({ name: "RootPage" });
 };
 </script>

@@ -23,7 +23,7 @@
   "css.validate": false,
   "files.exclude": {
     "**/.git": false,
-    "**/.husky": true
+    // "**/.husky": true
   },
   "stylelint.validate": [
     "css",

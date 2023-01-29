@@ -16,6 +16,5 @@ export default {
 import Menu from "@/routers/components/menu/index";
 import { firstPermissionRoute } from "@/routers";
 
-console.log(firstPermissionRoute, 'ss')
-
+console.log(firstPermissionRoute, "ss");
 </script>
