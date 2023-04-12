@@ -1,0 +1,20 @@
+import axios, { AxiosRequestConfig } from "axios";
+import to from "await-to-js";
+
+const baseURL = import.meta.env.VITE_API_BASE_URL;
+const instance = axios.create({
+  baseURL,
+});
+
+export const get = <T>(url: string, config?: AxiosRequestConfig) => {
+  return to<T>(instance.get(url, config));
+};
+export const post = <T>(
+  url: string,
+  data: any,
+  config?: AxiosRequestConfig
+) => {
+  return to<T>(instance.post(url, data, config));
+};
+
+export default instance;
