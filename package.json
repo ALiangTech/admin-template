@@ -95,12 +95,14 @@
         "parser": "@typescript-eslint/parser",
         "parserOptions": {
           "project": "./tsconfig.json"
+        },
+        "rules": {
+          "@typescript-eslint/prefer-optional-chain": "off"
         }
       }
     ],
     "rules": {
-      "@typescript-eslint/prefer-optional-chain": "off",
-      "no-undef": 1
+      "@typescript-eslint/prefer-optional-chain": "off"
     }
   },
   "stylelint": {
