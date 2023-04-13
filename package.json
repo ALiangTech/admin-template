@@ -89,6 +89,15 @@
       "plugin:prettier/recommended",
       "prettier"
     ],
+    "overrides": [
+      {
+        "files": ["*.ts", "*.tsx"],
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+          "project": "./tsconfig.json"
+        }
+      }
+    ],
     "rules": {
       "@typescript-eslint/prefer-optional-chain": "off",
       "no-undef": 1
