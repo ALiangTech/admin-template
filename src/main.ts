@@ -1,7 +1,6 @@
 import { createApp, App } from "vue";
 import "@unocss/reset/tailwind.css";
-import "./style.css";
-import "uno.css";
+import "virtual:uno.css";
 import APP from "./App.vue";
 import { MountRouterToApp } from "./routers";
 import { registerPermissionToApp, registerElementUI } from "./plugins";
