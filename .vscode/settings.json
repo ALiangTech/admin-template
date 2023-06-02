@@ -33,4 +33,5 @@
   ],
   "unocss.disable": true,
   "unocss.colorPreview": true,
+  "json.schemaDownload.enable": false,
 }
