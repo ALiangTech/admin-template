@@ -1,4 +1,4 @@
-// 操作 jwttoken
+// 操作 jwtToken
 // 检测 jwtToken
 import { useStorage, RemovableRef } from "@vueuse/core";
 type JwtToken = RemovableRef<string>;
