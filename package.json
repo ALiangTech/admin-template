@@ -13,6 +13,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "@unocss/reset": "^0.53.0",
     "@vueuse/core": "^10.1.2",
     "await-to-js": "^3.0.0",
