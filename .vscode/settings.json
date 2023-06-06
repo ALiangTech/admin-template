@@ -33,6 +33,5 @@
   ],
   "unocss.disable": true,
   "unocss.colorPreview": true,
-  "unocss.root": "packages/client"
-  
+  "json.schemaDownload.enable": false,
 }
