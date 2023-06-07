@@ -6,7 +6,7 @@ let jwtToken: JwtToken | undefined;
 export default function useJwtToken() {
   // 存放
   const setJwtToken = (value: string) => {
-    jwtToken = useStorage("jwtToken", value, sessionStorage);
+    jwtToken = useStorage("jwtToken", value, window.sessionStorage);
   };
   const getJwtToken = () => {
     return jwtToken?.value;

@@ -1,4 +1,4 @@
-import { mount } from 'cypress/vue';
+import { mount } from "cypress/vue";
 
 type MountParams = Parameters<typeof mount>;
 type OptionsParam = MountParams[1];

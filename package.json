@@ -9,9 +9,10 @@
     "serve": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix & stylelint '**/*.{css,vue}'",
+    "lint": "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix & stylelint 'src/**/*.{css,vue}'",
     "prepare": "husky install",
     "test": "vitest --config ./config/vitest/vitest.config.ts",
+    "coverage": "vitest run --coverage",
     "cypress": "cypress open"
   },
   "dependencies": {
@@ -32,6 +33,7 @@
     "@unocss/preset-wind": "^0.53.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "@vitest/coverage-v8": "^0.32.0",
     "@vue/eslint-config-typescript": "^11.0.3",
     "add": "^2.0.6",
     "autoprefixer": "^10.4.14",
@@ -74,7 +76,7 @@
   "lint-staged": {
     "src/**/*": [
       "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix",
-      "stylelint '**/*.{css,vue}'"
+      "stylelint 'src/**/*.{css,vue}'"
     ]
   },
   "eslintConfig": {
