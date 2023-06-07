@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "lint": "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix & stylelint '**/*.{css,vue}'",
     "prepare": "husky install",
-    "test": "vitest --config ./config/vitest/vitest.config.ts"
+    "test": "vitest --config ./config/vitest/vitest.config.ts",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@unocss/reset": "^0.53.0",
@@ -34,9 +35,11 @@
     "@vue/eslint-config-typescript": "^11.0.3",
     "add": "^2.0.6",
     "autoprefixer": "^10.4.14",
+    "cypress": "^12.13.0",
     "eslint": "^8.42.0",
     "eslint-config-alloy": "^5.0.0",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-cypress": "^2.13.3",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.14.1",
     "happy-dom": "^9.20.3",
@@ -91,7 +94,8 @@
       "plugin:vue/vue3-recommended",
       "alloy/typescript",
       "plugin:prettier/recommended",
-      "prettier"
+      "prettier",
+      "plugin:cypress/recommended"
     ],
     "overrides": [
       {
