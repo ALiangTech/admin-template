@@ -1,8 +1,9 @@
 // 查找第一个有权限的路由
 import { RouteRecordRaw } from "vue-router";
 
+type TempRouteRecordRaw = RouteRecordRaw | undefined;
 interface FindFirstPermissionParams {
-  routes: RouteRecordRaw[];
+  routes: TempRouteRecordRaw[];
 }
 type Find = FindFirstPermissionParams;
 export default function findFirstPermissionRoute({
@@ -11,9 +12,8 @@ export default function findFirstPermissionRoute({
   let route: RouteRecordRaw | undefined;
   function Find({ routes }: Find) {
     const [first] = routes;
-    const { children } = first;
-    if (children && children.length) {
-      Find({ routes: children });
+    if (first?.children?.length) {
+      Find({ routes: first.children });
     } else {
       route = first;
     }
