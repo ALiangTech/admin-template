@@ -15,7 +15,7 @@
       animation-name: meteor;
       animation-duration: 10s;
       animation-timing-function: linear;
-      animation-fill-mode: backwards;
+      animation-fill-mode: both;
       animation-iteration-count: infinite;
     }
 
@@ -85,6 +85,18 @@
     </g>
     <g transform="rotate(-105)">
       <ellipse class="meteor meteor_c" fill="url(#comet-gradient)" cx="150" cy="0" rx="150" ry="2"></ellipse>
+    </g>
+    <g transform="rotate(300)">
+      <ellipse class="meteor meteor_c" fill="url(#comet-gradient)" cx="40%" cy="100%" rx="150" ry="2"></ellipse>
+    </g>
+    <g transform="rotate(300)">
+      <ellipse class="meteor meteor_c" fill="url(#comet-gradient)" cx="40%" cy="100%" rx="150" ry="2"></ellipse>
+    </g>
+    <g transform="rotate(20)">
+      <ellipse class="meteor meteor_c" fill="url(#comet-gradient)" cx="130%" cy="0" rx="150" ry="2"></ellipse>
+    </g>
+       <g transform="rotate(40)">
+      <ellipse class="meteor meteor_c" fill="url(#comet-gradient)" cx="130%" cy="0" rx="150" ry="2"></ellipse>
     </g>
     <!-- 背景星星 -->
     <circle class="star" cx="89.86%" cy="20%" r="1.2"></circle>
