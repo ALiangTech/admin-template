@@ -1,4 +1,5 @@
 import { createApp, App } from "vue";
+import "element-plus/theme-chalk/dark/css-vars.css";
 import "@unocss/reset/tailwind.css";
 import "virtual:uno.css";
 import APP from "./LoginPage.vue";

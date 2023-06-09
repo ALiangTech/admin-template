@@ -1,13 +1,12 @@
 <template>
-  <section class="flex h-screen">
-    <div>left</div>
-    <div>
-      <el-tabs v-model="activeName" class="demo-tabs">
-        <template v-for="item of tabs" :key="item.id">
-          <el-tab-pane :label="item.label" :name="item.name"></el-tab-pane>
-        </template>
-      </el-tabs>
-      <component :is="currentComponent"></component>
+  <section class="flex flex-justify-center flex-items-center h-screen login-bg">
+    <div class="form flex flex-justify-center flex-items-center">
+      <div class="flex w-4xl">
+        <div class="flex-1" @click="toggleDark()">left</div>
+        <div class="flex-1">
+          <component :is="currentComponent"></component>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -15,6 +14,10 @@
 import { ref, computed } from "vue";
 import type { TabPaneProps } from "element-plus";
 import { PasswordForm, PhoneForm } from "./modules/forms";
+import { useDark, useToggle } from "@vueuse/core";
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 type TabItem = { id: number } & TabPaneProps;
 interface ComponentMap {
   [key: string]: any;
@@ -48,3 +51,16 @@ const tabs: TabItem[] = [
   },
 ];
 </script>
+<style scoped>
+.login-bg {
+  background-image: url("./modules/assets/darkBg.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.form > div {
+  background-color: var(--el-bg-color);
+  box-shadow: 1px 1px 20px 0 #00000057;
+  border-radius: var(--el-border-radius-base);
+}
+</style>

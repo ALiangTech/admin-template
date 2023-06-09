@@ -16,6 +16,7 @@
     "cypress": "cypress open"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "@unocss/reset": "^0.53.1",
     "@vueuse/core": "^10.1.2",
     "await-to-js": "^3.0.0",
@@ -77,12 +78,13 @@
   "lint-staged": {
     "src/**/*": [
       "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix",
-      "stylelint 'src/**/*.{css,vue}'"
+      "stylelint src/**/*.{css,vue}"
     ]
   },
   "eslintConfig": {
     "root": true,
     "parser": "vue-eslint-parser",
+    "ignorePatterns": ["src/**/*.svg"],
     "parserOptions": {
       "parser": {
         "js": "@babel/eslint-parser",
@@ -129,6 +131,7 @@
       "stylelint-config-prettier",
       "stylelint-config-recommended-vue"
     ],
+    "ignoreFiles": ["**/*.svg"],
     "rules": {
       "declaration-property-value-no-unknown": true
     },

@@ -35,4 +35,7 @@
   "unocss.colorPreview": true,
   "unocss.root": "packages/client",
   "json.schemaDownload.enable": false,
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
 }
