@@ -10,7 +10,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint:js": "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix",
-    "lint:css": "stylelint *.css",
+    "lint:css": "stylelint",
     "prepare": "husky install",
     "test": "vitest --config ./config/vitest/vitest.config.ts",
     "coverage": "vitest run --coverage",
