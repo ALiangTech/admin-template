@@ -9,7 +9,8 @@
     "serve": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix & stylelint 'src/**/*.{css,vue}'",
+    "lint:js": "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix",
+    "lint:css": "stylelint *.css",
     "prepare": "husky install",
     "test": "vitest --config ./config/vitest/vitest.config.ts",
     "coverage": "vitest run --coverage",
@@ -77,14 +78,13 @@
   },
   "lint-staged": {
     "src/**/*": [
-      "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix",
-      "stylelint src/**/*.{css,vue}"
-    ]
+      "pnpm run lint:js"
+    ],
+    "*.{css,vue}": ["pnpm run lint:css"]
   },
   "eslintConfig": {
     "root": true,
     "parser": "vue-eslint-parser",
-    "ignorePatterns": ["src/**/*.svg"],
     "parserOptions": {
       "parser": {
         "js": "@babel/eslint-parser",
@@ -93,6 +93,7 @@
         "tsx": "@typescript-eslint/parser"
       }
     },
+    "ignorePatterns": ["src/**/*.svg", "**/vendor/*.js", "src/**/*.png"],
     "extends": [
       "alloy",
       "alloy/vue",
@@ -131,18 +132,9 @@
       "stylelint-config-prettier",
       "stylelint-config-recommended-vue"
     ],
-    "ignoreFiles": ["**/*.svg"],
+    "ignoreFiles": ["**/*/*.svg", "**/*/.png"],
     "rules": {
       "declaration-property-value-no-unknown": true
-    },
-    "overrides": [
-      {
-        "files": [
-          "**/*.{js,ts,tsx}"
-        ],
-        "customSyntax": "postcss-styled-syntax",
-        "rules": {}
-      }
-    ]
+    }
   }
 }

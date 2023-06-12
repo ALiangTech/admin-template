@@ -53,7 +53,7 @@ const tabs: TabItem[] = [
 </script>
 <style scoped>
 .login-bg {
-  background-image: url("./modules/assets/darkBg.svg");
+  background-image: url("./modules/assets/bgColor.svg");
   background-repeat: no-repeat;
   background-size: 100%;
 }
