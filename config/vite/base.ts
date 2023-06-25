@@ -46,7 +46,7 @@ const config: UserConfigExport = {
   envDir: "./config/env",
   css: {
     postcss: {
-      plugins: [autoprefixer, postcssNesting],
+      plugins: [autoprefixer(), postcssNesting()],
     },
   },
 };
