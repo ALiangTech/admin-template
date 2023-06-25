@@ -71,8 +71,8 @@
     "vue-tsc": "^1.6.5"
   },
   "engines": {
-    "node": ">=14",
-    "pnpm": ">=7"
+    "node": ">=18",
+    "pnpm": ">=8"
   },
   "lint-staged": {
     "src/**/*.{ts,vue}": [
