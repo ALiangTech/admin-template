@@ -25,7 +25,6 @@
     "await-to-js": "^3.0.0",
     "axios": "^1.4.0",
     "element-plus": "^2.3.4",
-    "postcss-styled-syntax": "^0.4.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.2"
   },
@@ -118,7 +117,10 @@
       "stylelint-config-standard",
       "stylelint-config-standard-vue"
     ],
-    "ignoreFiles": ["**/*/*.svg", "**/*/.png"],
+    "ignoreFiles": [
+      "**/*/*.svg",
+      "**/*/.png"
+    ],
     "rules": {
       "declaration-property-value-no-unknown": true
     }
