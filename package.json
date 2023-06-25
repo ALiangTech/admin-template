@@ -23,7 +23,6 @@
     "@vueuse/core": "^10.1.2",
     "await-to-js": "^3.0.0",
     "axios": "^1.4.0",
-    "postcss-styled-syntax": "^0.4.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.2"
   },
