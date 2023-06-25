@@ -76,11 +76,13 @@
   },
   "lint-staged": {
     "src/**/*.{ts,vue}": [
-      "eslint --fix",
-      "prettier --write"
+      "eslint --fix"
     ],
     "src/**/*.{css,vue}": [
       "stylelint --fix"
+    ],
+    "src/**/*.{ts,vue,css}": [
+      "prettier --write"
     ]
   },
   "eslintConfig": {
