@@ -9,7 +9,7 @@ import {
   createMenuData,
   filterPermissionRoutes,
   findFirstPermissionRoute,
-  Menu,
+  type Menu,
 } from "@/routers/core";
 // 批量导入src router.ts 文件下的路由文件
 type batchModules = Record<string, Record<string, RouteRecordRaw>>;
