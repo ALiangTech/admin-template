@@ -10,7 +10,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "prettier": "prettier --write src/",
-    "stylelint": "stylelint 'src/**/*.{css,vue}'",
+    "stylelint": "stylelint src/**/*.{css,vue}",
     "eslint": "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix",
     "lint": "pnpm run eslint & pnpm run stylelint & pnpm run prettier",
     "prepare": "husky install",
