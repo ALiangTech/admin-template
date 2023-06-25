@@ -104,7 +104,7 @@
       "alloy",
       "alloy/vue",
       "alloy/typescript",
-      "eslint-plugin-cypress"
+      "plugin:cypress/recommended"
     ],
     "rules": {
       "@typescript-eslint/prefer-optional-chain": "off"
