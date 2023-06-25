@@ -1,8 +1,13 @@
 <template>
   <section class="flex flex-justify-center flex-items-center h-screen login-bg">
     <div class="form flex flex-justify-center flex-items-center">
-      <div class="flex w-4xl">
-        <div class="flex-1" @click="toggleDark()">left</div>
+      <div class="flex w-5xl form-height">
+        <div class="flex-1 form-brief" @click="toggleDark()">
+          <div class="brief-text flex flex-justify-center flex-items-center">
+            <span>welcome to choas</span>
+          </div>
+          <img src="./modules/assets/bg.jpg" alt="" />
+        </div>
         <div class="flex-1">
           <component :is="currentComponent"></component>
         </div>
@@ -53,9 +58,49 @@ const tabs: TabItem[] = [
 </script>
 <style scoped>
 .login-bg {
-  background-image: url("./modules/assets/bgColor.svg");
-  background-repeat: no-repeat;
-  background-size: 100%;
+  position: relative;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    display: block;
+    height: 100%;
+    width: 50%;
+  }
+}
+
+.login-bg::before {
+  left: 0;
+  background-color: #023f51;
+}
+
+.login-bg::after {
+  /* background-image: url("./modules/assets/bgColor.svg"); */
+  right: 0;
+  background-color: #f4f6fa;
+}
+
+.form-height {
+  height: 600px;
+}
+
+.form-brief {
+  position: relative;
+
+  & > img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .brief-text {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: hsl(0deg 0% 100% / 22%);
+    color: #b97070;
+  }
 }
 
 .form > div {
