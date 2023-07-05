@@ -11,7 +11,7 @@ import path from "path";
 const config: UserConfigExport = {
   plugins: [
     vue(),
-    Unocss(),
+    Unocss({ configFile: "./../../uno.config.ts"}),
     vueJsx(),
     mpa({
       pages: {

@@ -4,8 +4,8 @@ import {
   defineConfig,
   presetAttributify,
   presetWebFonts,
+  presetWind,
 } from "unocss";
-import presetWind from "@unocss/preset-wind";
 
 const config: UserConfig<any> = defineConfig({
   presets: [presetWind(), presetAttributify(), presetWebFonts()],
