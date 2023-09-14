@@ -1,0 +1,133 @@
+{
+  "name": "vue-admin-core",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "vite",
+    "serve": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "prettier": "prettier --write src/",
+    "stylelint": "stylelint src/**/*.{css,vue}",
+    "eslint": "eslint --ext .js,.vue,.jsx,.ts,.tsx src --fix",
+    "lint": "pnpm run eslint & pnpm run stylelint & pnpm run prettier",
+    "prepare": "husky install",
+    "test": "vitest --config ./config/vitest/vitest.config.ts",
+    "coverage": "vitest run --coverage",
+    "cypress": "cypress open",
+    "upp": "npx esno ./script/update-package.ts"
+  },
+  "dependencies": {
+    "@unocss/reset": "^0.55.7",
+    "@vueuse/core": "^10.4.1",
+    "await-to-js": "^3.0.0",
+    "axios": "^1.5.0",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.17",
+    "@babel/eslint-parser": "^7.22.15",
+    "@types/node": "^20.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "@vitejs/plugin-vue": "^4.3.4",
+    "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "@vitest/coverage-v8": "^0.34.4",
+    "@vue/eslint-config-typescript": "^11.0.3",
+    "autoprefixer": "^10.4.15",
+    "cypress": "^13.1.0",
+    "eslint": "^8.49.0",
+    "eslint-config-alloy": "^5.1.2",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-cypress": "^2.14.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "happy-dom": "^11.0.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "postcss": "^8.4.29",
+    "postcss-html": "^1.5.0",
+    "postcss-jsx": "^0.36.4",
+    "postcss-nesting": "^12.0.1",
+    "postcss-syntax": "^0.36.2",
+    "prettier": "^3.0.3",
+    "rollup-plugin-visualizer": "^5.9.2",
+    "stylelint": "^15.10.3",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-recommended-vue": "^1.5.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-vue": "^1.0.0",
+    "typescript": "^5.2.2",
+    "unocss": "^0.55.7",
+    "vite": "^4.4.9",
+    "vite-plugin-mpa-plus": "^0.5.4",
+    "vitest": "^0.34.4",
+    "vue-eslint-parser": "^9.3.1",
+    "vue-tsc": "^1.8.10"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,vue}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{css,vue}": [
+      "stylelint --fix"
+    ],
+    "src/**/*.{ts,vue,css}": [
+      "prettier --write"
+    ]
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true
+    },
+    "parser": "vue-eslint-parser",
+    "ignorePatterns": [],
+    "parserOptions": {
+      "parser": {
+        "js": "@babel/eslint-parser",
+        "jsx": "@babel/eslint-parser",
+        "ts": "@typescript-eslint/parser",
+        "tsx": "@typescript-eslint/parser"
+      }
+    },
+    "extends": [
+      "alloy",
+      "alloy/vue",
+      "alloy/typescript",
+      "plugin:cypress/recommended"
+    ],
+    "rules": {
+      "@typescript-eslint/prefer-optional-chain": "off"
+    }
+  },
+  "stylelint": {
+    "root": true,
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-standard-vue"
+    ],
+    "ignoreFiles": [
+      "**/*/*.svg",
+      "**/*/.png"
+    ],
+    "rules": {
+      "declaration-property-value-no-unknown": true
+    }
+  },
+  "prettier": {
+    "semi": true
+  },
+  "volta": {
+    "node": "18.17.1",
+    "npm": "10.1.0"
+  }
+}

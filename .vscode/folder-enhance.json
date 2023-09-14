@@ -1,0 +1,13 @@
+{
+  "test": "测试",
+  "/c:/Users/Aliang/Documents/github/admin-template/src/assets": "静态资源",
+  "/c:/Users/Aliang/Documents/github/admin-template/src/axios": "接口请求",
+  "/c:/Users/Aliang/Documents/github/admin-template/src/components/pure": "全局组件",
+  "/c:/Users/Aliang/Documents/github/admin-template/src/hooks": "全局钩子",
+  "/c:/Users/Aliang/Documents/github/admin-template/src/plugins": "基于vue的插件",
+  "/c:/Users/Aliang/Documents/github/admin-template/src/routers": "基于vue的路由",
+  "/c:/Users/Aliang/Documents/github/admin-template/src/utils": "全局工具类",
+  "/c:/Users/Aliang/Documents/github/admin-template/src/views": "全局页面",
+  "/c:/Users/Aliang/Documents/github/admin-template/src/components": "全局组件",
+  "/c:/Users/Aliang/Documents/github/admin-template/src/views/login": "登录界面"
+}
