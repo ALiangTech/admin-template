@@ -7,6 +7,7 @@ import mpa from "vite-plugin-mpa-plus";
 // @ts-ignore
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import path from "path";
+import { createAutoImport, createAutoImportComponents } from './plugins/naiveui';
 // 通用配置 开发和生产 都需要的配置
 const config: UserConfigExport = {
   plugins: [
@@ -37,6 +38,8 @@ const config: UserConfigExport = {
         },
       },
     }),
+    createAutoImport(),
+    createAutoImportComponents(),
   ],
   resolve: {
     alias: {

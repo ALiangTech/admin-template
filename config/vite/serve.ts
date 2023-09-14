@@ -1,4 +1,4 @@
-import { UserConfigExport } from "vite";
+import type { UserConfigExport } from "vite";
 
 const config: UserConfigExport = {
   server: {

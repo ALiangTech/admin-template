@@ -4,6 +4,8 @@
 
 项目采用[MPA](https://juejin.cn/post/7018876571658223623)模式 整体分离成俩部分： 登录部分 + 业务部分
 
+主要是方便权限计算
+
 ## 技术栈
 
 vite + vue3 + ts + vue-router
