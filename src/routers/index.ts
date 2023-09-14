@@ -51,7 +51,7 @@ export const MountRouterToApp = async (app: App) => {
   menu.value = createMenuData({ routes: hasPermissionRoutes });
   rootRoute.children = hasPermissionRoutes;
   const options: RouterOptions = {
-    history: createWebHistory(),
+    history: createWebHistory("/admin-template/"),
     routes: [rootRoute, noPermissionRoute],
     strict: true,
     sensitive: true,
