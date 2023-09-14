@@ -1,6 +1,6 @@
 import type { App } from "vue";
 import { createApp } from "vue";
-import "@unocss/reset/tailwind.css";
+import "@unocss/reset/normalize.css";
 import "virtual:uno.css";
 import APP from "./App.vue";
 import { MountRouterToApp } from "./routers";
