@@ -8,6 +8,7 @@ interface PackageItem {
 }
 
 // 运行pnpm outdated 命令获取需要升级的包和升级的版本 
+// todo pnpm oudated 可以直接获取json版本 后续在更新一下逻辑
 const up = spawn('pnpm', ['outdated'])
 
 up.stdout.on('data', (data) => {

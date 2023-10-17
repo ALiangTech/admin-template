@@ -27,6 +27,7 @@ css 使用[原子css](https://antfu.me/posts/reimagine-atomic-css-zh)方式: [un
 ## 项目依赖更新
 
   为保持项目活性 定期执行pnpm outdated 查看需要升级的三方依赖
+  可以直接运行pnpm upp 来同步更新第三放包 进行大版本升级
 
 **注意**
 ：大版本升级一定要去查看对应版本的注意事项
