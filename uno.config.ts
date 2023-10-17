@@ -9,6 +9,8 @@ import {
   presetWind,
   presetIcons,
 } from "unocss";
+import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx'
+
 
 const config: UserConfig<any> = defineConfig({
   presets: [presetWind(), presetAttributify(), presetWebFonts(), presetIcons({
@@ -16,7 +18,10 @@ const config: UserConfig<any> = defineConfig({
   })],
   shortcuts: {
     absoluteCenter: 'absolute left-50% top-50% translate--50%' // 相对定位居中
-  }
+  },
+  transformers: [
+    transformerAttributifyJsx(), // <--
+  ],
 });
 
 export default config;
