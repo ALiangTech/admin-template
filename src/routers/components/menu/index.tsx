@@ -1,6 +1,7 @@
-import { h, defineComponent, VNode } from "vue";
+import type { VNode } from "vue";
+import { h, defineComponent } from "vue";
 import { menu } from "@/routers";
-import { Menu } from "@/routers/core/create-menu-data";
+import type { Menu } from "@/routers/core/create-menu-data";
 import { useRouter } from "vue-router";
 interface CreateMenuVnode {
   menu: Menu[];
@@ -32,7 +33,6 @@ export default defineComponent({
       console.log(menu);
       return (
         <div>
-          <div>菜单</div>
           <div>{menuTree}</div>
         </div>
       );

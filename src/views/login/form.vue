@@ -13,6 +13,7 @@
       <n-form-item label="密码" path="user.age">
         <n-input
           v-model:value="formValue.user.age"
+          autocomplete="current-password"
           placeholder="输入密码"
           type="password"
           show-password-on="click"
