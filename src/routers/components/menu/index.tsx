@@ -2,6 +2,7 @@ import type { VNode } from "vue";
 import { h, defineComponent } from "vue";
 import { menu } from "@/routers";
 import type { Menu } from "@/routers/core/create-menu-data";
+import MenuGrapht from './graph.vue';
 import { useRouter } from "vue-router";
 interface CreateMenuVnode {
   menu: Menu[];
@@ -29,11 +30,13 @@ export default defineComponent({
       return create({ menu });
     }
     menuTree = createMenuVnode({ menu: menu.value });
+    console.log(menuTree)
     return () => {
       console.log(menu);
       return (
         <div>
-          <div>{menuTree}</div>
+          {/* <div>{menuTree}</div> */}
+          <MenuGrapht></MenuGrapht>
         </div>
       );
     };
