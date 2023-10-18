@@ -5,9 +5,7 @@
       <slot name="content"></slot>
     </section>
     <!-- 菜单 -->
-    <section>
-      <slot name="menu"></slot>
-    </section>
+    <slot name="menu"></slot>
   </main>
 </template>
 <script setup lang="ts">

@@ -2,7 +2,7 @@ import type { VNode } from "vue";
 import { h, defineComponent } from "vue";
 import { menu } from "@/routers";
 import type { Menu } from "@/routers/core/create-menu-data";
-import MenuGrapht from './graph.vue';
+// import MenuGrapht from './graph.vue';
 import { useRouter } from "vue-router";
 interface CreateMenuVnode {
   menu: Menu[];
@@ -14,7 +14,7 @@ export default defineComponent({
     function createMenuVnode({ menu }: CreateMenuVnode) {
       function create({ menu }: CreateMenuVnode): VNode[] {
         return menu.map((menuItem) => {
-          const { label, children, routeName } = menuItem;
+          const { label, routeName } = menuItem;
           const labelVnode = h(
             "div",
             {
@@ -24,7 +24,7 @@ export default defineComponent({
             },
             [label]
           );
-          return h("div", [labelVnode, create({ menu: children })]);
+          return h("div", [labelVnode]); // create({ menu: children }) // 二级菜单暂时不渲染
         });
       }
       return create({ menu });
@@ -34,10 +34,11 @@ export default defineComponent({
     return () => {
       console.log(menu);
       return (
-        <div>
-          {/* <div>{menuTree}</div> */}
-          <MenuGrapht></MenuGrapht>
-        </div>
+        <section class="flex">
+           <div class="flex">
+             {menuTree}
+           </div>
+        </section>
       );
     };
   },
