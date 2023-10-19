@@ -50,7 +50,6 @@ export const MountRouterToApp = async (app: App) => {
   });
   menu.value = createMenuData({ routes: hasPermissionRoutes });
   rootRoute.children = hasPermissionRoutes;
-  console.log(import.meta.env.BASE_URL, "import.meta.env.BASE_URL");
   const options: RouterOptions = {
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [rootRoute, noPermissionRoute],
