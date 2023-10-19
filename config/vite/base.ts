@@ -18,7 +18,7 @@ const config: UserConfigExport = {
         main: {
           entry: "src/main.ts",
           filename: "index.html",
-          template: "html/index.html",
+          template: "index.html",
           inject: {
             data: {
               title: "admin-naive",
