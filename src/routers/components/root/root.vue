@@ -6,7 +6,11 @@
   <div>================</div> -->
   <Layout>
     <template #content>
-      <router-view></router-view>
+      <router-view v-slot="{ Component }">
+        <RouterTransition>
+          <component :is="Component" />
+        </RouterTransition>
+      </router-view>
     </template>
     <template #menu>
       <Menu></Menu>
@@ -17,6 +21,7 @@
 <script setup lang="ts">
 import Menu from "@/routers/components/menu/index";
 import Layout from "./layout.vue";
+import RouterTransition from "./transition.vue";
 import { firstPermissionRoute } from "@/routers";
 
 console.log(firstPermissionRoute, "ss");

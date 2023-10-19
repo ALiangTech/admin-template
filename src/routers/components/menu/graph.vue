@@ -1,7 +1,7 @@
 <template>
   <svg
-    width="24"
-    height="24"
+    width="30"
+    height="30"
     viewBox="0 0 48 48"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -12,9 +12,9 @@
       width="14"
       height="9"
       fill="none"
-      stroke="#333"
-      stroke-width="4"
-      stroke-linejoin="round"
+      stroke="#066fe4"
+      stroke-width="3"
+      stroke-linejoin="miter"
     />
     <rect
       x="6"
@@ -22,9 +22,9 @@
       width="14"
       height="9"
       fill="none"
-      stroke="#333"
-      stroke-width="4"
-      stroke-linejoin="round"
+      stroke="#066fe4"
+      stroke-width="3"
+      stroke-linejoin="miter"
     />
     <rect
       x="28"
@@ -32,23 +32,23 @@
       width="14"
       height="9"
       fill="none"
-      stroke="#333"
-      stroke-width="4"
-      stroke-linejoin="round"
+      stroke="#066fe4"
+      stroke-width="3"
+      stroke-linejoin="miter"
     />
     <path
       d="M24 16V24"
-      stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke="#066fe4"
+      stroke-width="3"
+      stroke-linecap="butt"
+      stroke-linejoin="miter"
     />
     <path
       d="M13 33V24H35V33"
-      stroke="#333"
-      stroke-width="4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke="#066fe4"
+      stroke-width="3"
+      stroke-linecap="butt"
+      stroke-linejoin="miter"
     />
   </svg>
 </template>

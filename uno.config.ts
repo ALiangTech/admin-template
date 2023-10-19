@@ -22,6 +22,9 @@ const config: UserConfig<any> = defineConfig({
   transformers: [
     transformerAttributifyJsx(), // <--
   ],
+  rules: [
+    [/^circle-(\d+)$/, ([, d]) => ({ 'clip-path': `circle(${d}%)` })],
+  ]
 });
 
 export default config;

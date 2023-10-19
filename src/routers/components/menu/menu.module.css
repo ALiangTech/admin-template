@@ -1,7 +1,3 @@
-.hidden-menu {
-  display: none;
-}
-
-.show-menu {
-  display: block;
+.circle {
+  clip-path: circle(0%);
 }

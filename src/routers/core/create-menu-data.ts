@@ -8,6 +8,7 @@ type Map = CreateMenuDataParams;
 export interface Menu {
   routeName: RouteRecordRaw["name"];
   label: string;
+  icon?: string | null;
   children: Menu[];
 }
 export default function createMenuData({ routes }: CreateMenuDataParams) {
@@ -18,8 +19,9 @@ export default function createMenuData({ routes }: CreateMenuDataParams) {
         const { meta, name, children = [] } = route;
         const temp: Menu = { routeName: name, children: [], label: "" };
         if (meta?.menu) {
-          const { label } = meta.menu;
+          const { label, icon } = meta.menu;
           temp.label = label;
+          temp.icon = icon ?? null;
           temp.children = mapRoutes({ routes: children });
         }
         return temp;

@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from "vue-router";
+import type { RouteRecordRaw } from "vue-router";
 import Test from "@/views/test/index.vue";
 import Test2 from "@/views/test/test2.vue";
 import Test4 from "@/views/test/test4.vue";
@@ -9,6 +9,7 @@ export const login: RouteRecordRaw = {
     code: "xx",
     menu: {
       label: "test1",
+      icon: "MenuGrapht",
     },
   },
   component: Test,

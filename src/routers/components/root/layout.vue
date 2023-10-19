@@ -1,7 +1,7 @@
 <template>
   <main class="flex flex-col justify-between h-full w-full">
     <!-- 内容 -->
-    <section class="flex-1">
+    <section class="flex-1 relative overflow-hidden">
       <slot name="content"></slot>
     </section>
     <!-- 菜单 -->
