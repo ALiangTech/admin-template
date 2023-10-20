@@ -1,9 +1,4 @@
 <template>
-  <!-- <HasPermissionControl code="xxs">
-    <div>有权限</div>
-  </HasPermissionControl>
-  <Menu></Menu>
-  <div>================</div> -->
   <Layout>
     <template #content>
       <router-view v-slot="{ Component }">
