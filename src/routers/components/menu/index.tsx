@@ -1,4 +1,4 @@
-import type { DefineComponent, VNode } from "vue";
+import type { Comment, DefineComponent, Text, VNode } from "vue";
 import { h, defineComponent } from "vue";
 import { menu } from "@/routers";
 import type { Menu } from "@/routers/core/create-menu-data";
@@ -6,6 +6,7 @@ import MenuGrapht from './graph.vue';
 import { useRouter } from "vue-router";
 import useMenuAnimation from "./useAnimation";
 import { isString } from 'lodash-es'
+import { NTooltip } from 'naive-ui'
 interface CreateMenuVnode {
   menu: Menu[];
 }
@@ -25,10 +26,18 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     let menuTree: VNode[] = [];
+    function createTooltip(vnode:any,text: string) {
+      return h(NTooltip, {
+        trigger: 'hover'
+      }, {
+        trigger: () => h(vnode),
+        default: () => text
+      })
+    }
     function createMenuVnode({ menu }: CreateMenuVnode) {
       function create({ menu }: CreateMenuVnode): VNode[] {
         return menu.map((menuItem) => {
-          const { routeName, icon } = menuItem;
+          const { routeName, icon,label } = menuItem;
           const labelVnode = h(
             "div",
             {
@@ -56,7 +65,7 @@ export default defineComponent({
               'justify-center': 'justify-center',
               'items-center': 'items-center',
             }
-          }, [labelVnode]); // create({ menu: children }) // 二级菜单暂时不渲染
+          }, [createTooltip(labelVnode, label)]); // create({ menu: children }) // 二级菜单暂时不渲染
         });
       }
       return create({ menu });
@@ -65,8 +74,8 @@ export default defineComponent({
     const { menuRef, menuListRef } = useMenuAnimation()
     return () => {
       return (
-        <section class="flex justify-center items-center h-64px" ref={menuRef}>
-          <div class="flex  bg-lime-1 circle-0  w-48px h-48px overflow-hidden" ref={menuListRef}>
+        <section class="flex justify-center items-center h-64px bg-lime-1" ref={menuRef}>
+          <div class="flex bg-white circle-0  w-48px h-48px overflow-hidden" ref={menuListRef}>
             {menuTree}
           </div>
         </section>
