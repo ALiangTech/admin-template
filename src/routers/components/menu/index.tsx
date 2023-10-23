@@ -28,7 +28,8 @@ export default defineComponent({
     let menuTree: VNode[] = [];
     function createTooltip(vnode:any,text: string) {
       return h(NTooltip, {
-        trigger: 'hover'
+        trigger: 'hover',
+        delay: 500
       }, {
         trigger: () => h(vnode),
         default: () => text

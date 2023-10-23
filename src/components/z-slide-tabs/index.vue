@@ -1,13 +1,13 @@
 <template>
   <section
-    class="relative flex p-2 rounded-4px bg-white gap-2 items-center justify-center"
+    class="relative p-2 rounded-4px flex flex-col bg-white gap-2 items-center justify-center h-100%"
   >
-    <div ref="gbg" class="absolute bg-lime-2 left-0 h-1.5em rounded-6px"></div>
+    <div ref="gbg" class="absolute bg-lime-2 top-0 h-1.5em rounded-6px"></div>
     <div
       v-for="item of list"
       ref="doms"
       :key="item.value"
-      class="text-title cursor-pointer z-1 px-1"
+      class="text-title cursor-pointer z-2 px-1 w-100% text-center"
       @click="handerClick(item.value)"
     >
       <span>{{ item.label }}</span>
@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { gsap } from "gsap";
-import { watchEffect, nextTick } from "vue";
+import { watchEffect, nextTick, ref } from "vue";
 interface ListItem {
   label: string;
   value: number | string;
@@ -43,8 +43,8 @@ const gbg = ref();
 function handerClickAnimation(e: Node) {
   console.log(e);
   const { target } = e;
-  const { offsetLeft, offsetWidth } = target;
-  gsap.to(gbg.value, { x: offsetLeft, width: offsetWidth, duration: 0.3 });
+  const { offsetTop, offsetWidth } = target;
+  gsap.to(gbg.value, { y: offsetTop, width: offsetWidth, duration: 0.3 });
 }
 
 // 根据modelValue 值来高亮

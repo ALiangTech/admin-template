@@ -1,9 +1,9 @@
 <template>
-  <section class="h-100% w-100% bg-c-primaryLayout">
-    <div class="w-300px mx-auto pt-2">
+  <section class="h-100% flex w-100% bg-c-primaryLayout">
+    <div class="w-160px mx-auto">
       <ZSliceTabs v-model="routeName" @change="handleRouter"></ZSliceTabs>
     </div>
-    <div>
+    <div class="flex-1">
       <router-view></router-view>
     </div>
   </section>
