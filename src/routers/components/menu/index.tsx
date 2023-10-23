@@ -66,7 +66,7 @@ export default defineComponent({
     return () => {
       return (
         <section class="flex justify-center items-center h-64px" ref={menuRef}>
-          <div class="flex  bg-blueGray circle-0  w-48px h-48px overflow-hidden" ref={menuListRef}>
+          <div class="flex  bg-lime-1 circle-0  w-48px h-48px overflow-hidden" ref={menuListRef}>
             {menuTree}
           </div>
         </section>

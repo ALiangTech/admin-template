@@ -17,12 +17,15 @@ export default function filterPermissionRoutes(params: FilterPermissionParams) {
       const { meta, children = [] } = route;
       if (meta) {
         const { code } = meta;
-        if (codes.includes(code)) {
-          // have permission
-          route.children = filter({ routes: children });
-          return route;
+        if (code) {
+          if (code.every((icode) => codes.includes(icode))) {
+            route.children = filter({ routes: children });
+            return route;
+          } else {
+            return false;
+          }
         } else {
-          return false;
+          return true;
         }
       }
       return true;

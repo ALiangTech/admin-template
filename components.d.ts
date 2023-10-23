@@ -13,5 +13,6 @@ declare module 'vue' {
     NInput: typeof import('naive-ui')['NInput']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ZSlideTabs: typeof import('./src/components/z-slide-tabs/index.vue')['default']
   }
 }
