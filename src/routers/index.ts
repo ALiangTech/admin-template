@@ -1,4 +1,8 @@
-import type { RouterOptions, RouteRecordRaw } from "vue-router";
+import type {
+  RouterOptions,
+  RouteRecordRaw,
+  RouteRecordName,
+} from "vue-router";
 import { createRouter, createWebHistory } from "vue-router";
 import type { App } from "vue";
 import { ref } from "vue";
@@ -39,6 +43,20 @@ const rootRoute: RouteRecordRaw = {
   component: () => import("./components/root/root.vue"),
   children: [],
 };
+
+// 给root设置 重定向到 有权限的第一个路由
+
+function setRootRedirect(
+  root: RouteRecordRaw,
+  redirect: RouteRecordName | undefined,
+) {
+  if (redirect) {
+    root.redirect = () => {
+      return { name: redirect };
+    };
+  }
+}
+
 // 挂载到实例上面
 export const MountRouterToApp = async (app: App) => {
   const hasPermissionRoutes = filterPermissionRoutes({
@@ -49,6 +67,7 @@ export const MountRouterToApp = async (app: App) => {
     routes: hasPermissionRoutes,
   });
   menu.value = createMenuData({ routes: hasPermissionRoutes });
+  setRootRedirect(rootRoute, firstPermissionRoute.value?.name);
   rootRoute.children = hasPermissionRoutes;
   const options: RouterOptions = {
     history: createWebHistory(import.meta.env.BASE_URL),
