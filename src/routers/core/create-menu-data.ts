@@ -29,6 +29,5 @@ export default function createMenuData({ routes }: CreateMenuDataParams) {
       .filter(({ label }) => label); // filter no menu data
   }
   menu = mapRoutes({ routes });
-  console.log(menu, "menu");
   return menu;
 }

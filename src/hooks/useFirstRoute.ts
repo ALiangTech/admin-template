@@ -1,17 +1,24 @@
 // 多children 下跳转第一个有权限的菜单
 
-import { isArray } from "lodash-es";
 import { useRoute, useRouter } from "vue-router";
+import createMenuData from "@/routers/core/create-menu-data";
 
-export default function useFirstRoute() {
-  const { path } = useRoute();
+interface Options {
+  routeName: string;
+}
+
+export default function useFirstRoute(options: Options) {
+  const route = useRoute();
   const router = useRouter();
-  const currentRoute = router.getRoutes().find((item) => item.path === path);
-  if (currentRoute && isArray(currentRoute?.children)) {
-    const [first] = currentRoute.children;
-    if (first) {
-      const { name } = first;
-      router.push({ name });
-    }
+  const currentRoute = router
+    .getRoutes()
+    .find((item) => item.name === options.routeName)!;
+  function getChildren() {
+    return currentRoute.children;
   }
+  function getMenus() {
+    const routes = getChildren();
+    return createMenuData({ routes });
+  }
+  return { getMenus, getChildren, router, route };
 }

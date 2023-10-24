@@ -1,6 +1,7 @@
 <template>
   <section
-    class="relative p-2 rounded-4px flex flex-col bg-white gap-2 items-center justify-center h-100%"
+    v-element-size="onResize"
+    class="relative p-2 rounded-4px flex flex-col bg-gray-2 gap-2 items-center justify-center h-100%"
   >
     <div ref="gbg" class="absolute bg-lime-2 top-0 h-1.5em rounded-6px"></div>
     <div
@@ -18,6 +19,7 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
 import { watchEffect, nextTick, ref } from "vue";
+import { vElementSize } from "@vueuse/components";
 interface ListItem {
   label: string;
   value: number | string;
@@ -34,14 +36,13 @@ const props = withDefaults(defineProps<Props>(), {
 });
 const emits = defineEmits(["update:modelValue", "change"]);
 // 设置当前选中的值
-function handerClick(value: string) {
+function handerClick(value: string | number) {
   emits("update:modelValue", value);
   emits("change", value);
 }
 
 const gbg = ref();
-function handerClickAnimation(e: Node) {
-  console.log(e);
+function handerClickAnimation(e: { target: HTMLElement }) {
   const { target } = e;
   const { offsetTop, offsetWidth } = target;
   gsap.to(gbg.value, { y: offsetTop, width: offsetWidth, duration: 0.3 });
@@ -49,11 +50,10 @@ function handerClickAnimation(e: Node) {
 
 // 根据modelValue 值来高亮
 
-const doms = ref<Node>(null);
+const doms = ref<HTMLElement[]>([]);
 
 watchEffect(() => {
-  const modelValue = props.modelValue;
-  const index = props.list.findIndex((item) => item.value === modelValue);
+  const index = findCurrentElementIndex();
   nextTick(() => {
     if (doms.value) {
       const target = doms.value[index];
@@ -61,4 +61,19 @@ watchEffect(() => {
     }
   });
 });
+
+// 当前元素 dom 尺寸发生变化 背景也应该变化 不然 位置会错位
+function onResize() {
+  const index = findCurrentElementIndex();
+  const target = doms.value[index];
+  handerClickAnimation({ target });
+}
+
+// 根据modelValue 找到当前元素下标
+
+function findCurrentElementIndex() {
+  const modelValue = props.modelValue;
+  const index = props.list.findIndex((item) => item.value === modelValue);
+  return index;
+}
 </script>
