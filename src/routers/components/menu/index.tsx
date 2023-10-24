@@ -47,8 +47,8 @@ export default defineComponent({
               class: {
                 'text-0': 'text-0',
                 'line-height-0': 'line-height-0',
-                'w-42px': 'w-42px',
-                'h-42px': 'h-42px',
+                'w-32px': 'w-32px',
+                'h-32px': 'h-32px',
                 'rounded-50%': 'rounded-50%',
                 'flex': 'flex',
                 'justify-center': 'justify-center',
@@ -73,8 +73,8 @@ export default defineComponent({
     menuTree = createMenuVnode({ menu: menu.value });
     return () => {
       return (
-        <section class="flex justify-center items-center h-64px bg-lime-6">
-          <div class="flex w-50% h-48px overflow-hidden gap-2">
+        <section class="flex justify-center items-center h-48px bg-lime-5">
+          <div class="flex w-50% h-32px overflow-hidden gap-2">
             {menuTree}
           </div>
         </section>
