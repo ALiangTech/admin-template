@@ -1,5 +1,5 @@
 <template>
-  <ZSliceMenus :route-name="users.name"></ZSliceMenus>
+  <ZSliceMenus :route-name="users.name as string"></ZSliceMenus>
 </template>
 
 <script setup lang="ts">
