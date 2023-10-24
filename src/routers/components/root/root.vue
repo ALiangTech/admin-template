@@ -17,10 +17,6 @@
 import Menu from "@/routers/components/menu/index";
 import Layout from "./layout.vue";
 import RouterTransition from "./transition.vue";
-import { firstPermissionRoute } from "@/routers";
-
-console.log(firstPermissionRoute, "ss");
-
 defineOptions({
   name: "RootPage",
 });

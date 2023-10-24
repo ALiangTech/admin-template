@@ -1,10 +1,9 @@
-import type { Comment, DefineComponent, Text, VNode } from "vue";
+import type { DefineComponent, VNode } from "vue";
 import { h, defineComponent } from "vue";
 import { menu } from "@/routers";
 import type { Menu } from "@/routers/core/create-menu-data";
 import MenuGrapht from './graph.vue';
 import { useRouter } from "vue-router";
-import useMenuAnimation from "./useAnimation";
 import { isString } from 'lodash-es'
 import { NTooltip } from 'naive-ui'
 interface CreateMenuVnode {
@@ -72,11 +71,10 @@ export default defineComponent({
       return create({ menu });
     }
     menuTree = createMenuVnode({ menu: menu.value });
-    const { menuRef, menuListRef } = useMenuAnimation()
     return () => {
       return (
-        <section class="flex justify-center items-center h-64px bg-lime-1" ref={menuRef}>
-          <div class="flex bg-white circle-0  w-48px h-48px overflow-hidden" ref={menuListRef}>
+        <section class="flex justify-center items-center h-64px bg-lime-6">
+          <div class="flex w-50% h-48px overflow-hidden gap-2">
             {menuTree}
           </div>
         </section>
