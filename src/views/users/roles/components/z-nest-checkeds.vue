@@ -2,14 +2,51 @@
 import { h, ref } from "vue";
 import { NCheckbox } from "naive-ui";
 
+interface Checked {
+  [propName: string]: boolean;
+}
+
 interface DataItem {
   label: string;
   value: string;
   checked: string;
+  parentValues: any[]; // 所有的父级元素值
+  childrenValues: any[]; // 所有子级元素值
   children: DataItem[];
 }
 // 如果勾选了子级 那么父级 也会被勾选 改组件只满足
 // 如果父级 取消了勾选 并且子级有勾选的 那么 子级应该取消勾选
+
+function setChildrenPareneValues(
+  data: DataItem[],
+  parentDataItem: DataItem | null,
+) {
+  return data.map((item) => {
+    if (!Array.isArray(item?.parentValues)) {
+      item.parentValues = [];
+    }
+    if (parentDataItem) {
+      item.parentValues.push(parentDataItem.value!);
+      item.parentValues = item.parentValues.concat(parentDataItem.parentValues);
+    }
+    item.children = setChildrenPareneValues(item.children, item);
+    return item;
+  });
+}
+function getChildChildrenValues(data: DataItem[]) {
+  const temp: string[] = [];
+  data.forEach((item) => {
+    temp.push(item.value, ...getChildChildrenValues(item.children));
+  });
+  return temp;
+}
+function setChildChildrenValues(data: DataItem[]) {
+  return data.map((item) => {
+    item.childrenValues = getChildChildrenValues(item.children);
+    item.children = setChildChildrenValues(item.children);
+    return item;
+  });
+}
 export default {
   props: {
     data: {
@@ -23,8 +60,10 @@ export default {
   },
   setup(props) {
     const data = props.data as DataItem[];
-    const checked = ref({});
-    function createCheckedVnode(data: DataItem[]) {
+    setChildrenPareneValues(data, null);
+    setChildChildrenValues(data);
+    const checked = ref<Checked>({});
+    function createCheckedVnode(data: DataItem[]): any[] {
       const vnodes = data.map((item, index) => {
         return h(
           "div",
@@ -40,7 +79,23 @@ export default {
                 {
                   checked: checked.value[item.value],
                   onUpdateChecked: (v) => {
-                    checked.value = { [item.value]: v };
+                    const temp: any = {};
+                    if (v) {
+                      // 如果是选中 那么父级也应该选中
+                      item.parentValues.forEach((key) => {
+                        temp[key] = true;
+                      });
+                    } else {
+                      // 如果是取消 那么子级也应该取消
+                      item.childrenValues.forEach((key) => {
+                        temp[key] = false;
+                      });
+                    }
+                    checked.value = {
+                      ...checked.value,
+                      ...temp,
+                      [item.value]: v,
+                    };
                   },
                 },
                 item.label,
