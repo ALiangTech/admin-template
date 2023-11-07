@@ -6,7 +6,7 @@ interface Menu {
 
 declare module "vue-router" {
   interface RouteMeta {
-    code?: string[];
+    code?: string;
     menu?: Menu;
   }
 }

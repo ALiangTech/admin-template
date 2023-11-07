@@ -18,7 +18,7 @@ export default function filterPermissionRoutes(params: FilterPermissionParams) {
       if (meta) {
         const { code } = meta;
         if (code) {
-          if (code.every((icode) => codes.includes(icode))) {
+          if (codes.includes(code)) {
             route.children = filter({ routes: children });
             return route;
           } else {

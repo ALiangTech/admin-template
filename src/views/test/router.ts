@@ -5,7 +5,7 @@ export const login: RouteRecordRaw = {
   path: "/test",
   name: "test",
   meta: {
-    code: ["xx"],
+    code: "xx",
     menu: {
       label: "test1",
       icon: "MenuGrapht",
@@ -17,7 +17,7 @@ export const login: RouteRecordRaw = {
       path: "test2",
       name: "test2",
       meta: {
-        code: ["xx"],
+        code: "xx",
         menu: {
           label: "test2",
         },
