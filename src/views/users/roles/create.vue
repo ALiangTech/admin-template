@@ -77,7 +77,7 @@ const permissions: PermissionItem[] = [
         children: [
           {
             label: "创建角色",
-            value: "testcreateAccount",
+            value: "testcreateRoles",
             children: [],
           },
           {
