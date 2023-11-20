@@ -1,9 +1,8 @@
 <template>
-  <n-button @click="show = true"> 打开 </n-button>
+  <n-button @click="show = true"> 创建角色 </n-button>
   <!-- 创建角色侧边弹窗 -->
   <n-drawer v-model:show="show" :width="540">
     <n-drawer-content title="创建角色" closable>
-      《斯通纳》是美国作家约翰·威廉姆斯在 1965 年出版的小说。
       <ZNestChecked :data="permissions"></ZNestChecked>
     </n-drawer-content>
   </n-drawer>

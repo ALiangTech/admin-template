@@ -98,7 +98,9 @@ export default {
                     };
                   },
                 },
-                item.label,
+                {
+                  default: () => item.label,
+                },
               ),
             ]),
             h("div", { class: "flex-1" }, createCheckedVnode(item.children)),
