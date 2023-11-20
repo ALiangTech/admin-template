@@ -18,10 +18,14 @@ export default function useMenuAnimation() {
         duration: 1.5,
       }); // 背景颜色消失
     t3.to(dom, {
-      background: "radial-gradient(#ccc 50px, #FFF 50%)",
+      background: "radial-gradient(#ccc 150px, #FFF 50%)",
       duration: 1.5,
     }); // 背景颜色 变大 从圆形
     previousDom.value = dom;
   }
-  return { animateClickEffect, previousDom };
+  // 设置proviousDom 值
+  function setProviousDomValue(value: gsap.TweenTarget) {
+    previousDom.value = value;
+  }
+  return { animateClickEffect, setProviousDomValue };
 }

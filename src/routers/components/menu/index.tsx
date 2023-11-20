@@ -14,17 +14,10 @@ interface IconVondeMap {
   [prop: string]: DefineComponent<{}, {}, any>
 }
 const icons:IconVondeMap = { MenuGrapht }
-function renderIcon(icon: string) {
-  if (isString(icon)) {
-    const temp = icons[icon]
-    return temp ? h(temp) : null
-
-  }
-  return null
-}
 
 // 确保上一次点击完成下一次才能点击
 // 只处理同步callback
+// 用于解决频繁的切换导致动画紊乱
 function waitForPreviousClick() {
     let canClick = true;
     return (callBack: Function) => {
@@ -38,7 +31,9 @@ function waitForPreviousClick() {
     }
 }
 const waitFun = waitForPreviousClick();
+
 // 当前的菜单不能重复点击
+// 用于解决 在二级菜单的时候 点击一级菜单会导致路由丢失
 function disableDuplicateClicks(currentRoute:RouteLocationNormalizedLoaded,routeName: RouteRecordName | undefined, callBack:Function ) {
    
     if(isSameRoute(currentRoute, routeName)) {
@@ -47,7 +42,7 @@ function disableDuplicateClicks(currentRoute:RouteLocationNormalizedLoaded,route
     callBack();
 }
 
-// 判断是否是当前的路由
+// 判断routeName是否是当前的路由
 function isSameRoute(currentRoute:RouteLocationNormalizedLoaded,routeName: RouteRecordName | undefined,) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { matched:[_, currentRouter] } = currentRoute;
@@ -56,7 +51,6 @@ function isSameRoute(currentRoute:RouteLocationNormalizedLoaded,routeName: Route
 }
 
 // 路由默认高亮背景色
-
 function defaultHighlightBgColor(currentRoute:RouteLocationNormalizedLoaded,routeName: RouteRecordName | undefined) {
   if(isSameRoute(currentRoute, routeName)) {
     return { 'background': 'radial-gradient(#ccc 50px, #FFF 50%)'}
@@ -64,21 +58,29 @@ function defaultHighlightBgColor(currentRoute:RouteLocationNormalizedLoaded,rout
   return {}
 }
 
-// 获取默认的高亮dom
-
-function getDefaultHighLightDom(currentRoute:RouteLocationNormalizedLoaded,routeName: RouteRecordName | undefined, dom) {
-  if(isSameRoute(currentRoute, routeName)) {
-    console.log(dom, "doom")
-    return dom
-  }
+/**
+ * @description 获取默认的高亮dom
+ * @description 函数执行前提 我全局只有菜单里面有自定义属性data-high-light
+ * @description 通过menuTree 中的el 提取要高亮的dom
+ *
+ */
+function getDefaultHighLightDom(menuTree:any[],route:RouteLocationNormalizedLoaded) {
+    const targets = menuTree.map(({ el: { children } }) => {
+      const [ target ] = children
+      return target
+    })
+    const currentHighLightDom = targets.find(el => {
+      const routeName =  el.getAttribute("data-route-name")
+      return isSameRoute(route, routeName)
+    })
+    return currentHighLightDom
 }
-
 
 export default defineComponent({
   setup() {
     const router = useRouter();
     const route = useRoute()
-    const { animateClickEffect, previousDom } = useMenuAnimation();
+    const { animateClickEffect, setProviousDomValue } = useMenuAnimation();
     let menuTree: VNode[] = [];
     function createLabel(label: string) {
       return h("div", {
@@ -90,6 +92,14 @@ export default defineComponent({
       }, {
         default: () => label
       })
+    }
+    function renderIcon(icon: string) {
+      if (isString(icon)) {
+        const temp = icons[icon]
+        return temp ? h(temp) : null
+    
+      }
+      return null
     }
     function createMenuItem(menuItem:Menu) {
       const { icon, label } = menuItem;
@@ -120,7 +130,6 @@ export default defineComponent({
                 });
               },
               class: {
-                "menu-add-bg": "menu-add-bg",
                 'w-64px': 'w-64px',
                 'flex': 'flex',
                 'justify-center': 'justify-center',
@@ -130,13 +139,15 @@ export default defineComponent({
                 'cursor-pointer': 'cursor-pointer',
                 'border-rd-4px':'border-rd-4px',
               },
-              style: defaultHighlightBgColor(route, routeName)
+              style: defaultHighlightBgColor(route, routeName),
+              'data-route-name': routeName
             },
             [createMenuItem(menuItem)]
           );
-          onMounted(() => {
-            previousDom.value = getDefaultHighLightDom(route, routeName, labelVnode.el)
-          })
+          // onMounted(() => {
+          //   // labelVnod.el 得在dom渲染后才能获取
+          //   previousDom.value = getDefaultHighLightDom(route, routeName, labelVnode.el)
+          // })
           return h("div", {
             class: {
               'flex': 'flex',
@@ -149,9 +160,13 @@ export default defineComponent({
       return create({ menu });
     }
     menuTree = createMenuVnode({ menu: menu.value });
+    onMounted(() => {
+      // 涉及dom操作 故放在dom渲染后操作
+      setProviousDomValue(getDefaultHighLightDom(menuTree,route))
+    })
     return () => {
       return (
-        <section class="flex justify-center items-center h-64px bg-lime-5">
+        <section class="flex justify-center items-center h-64px bg-lime-5" id="menu">
           <div class="flex w-50% overflow-hidden gap-2">
             {menuTree}
           </div>
