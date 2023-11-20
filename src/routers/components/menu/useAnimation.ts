@@ -1,26 +1,27 @@
 import { gsap } from "gsap";
-import { onMounted, ref } from "vue";
-// 菜单的渐显
-// 菜单icon的动画 从圆形 变成长方形
+import { ref } from "vue";
+// 菜单项 动效
 // 时间轴
 export const t1 = gsap.timeline();
+export const t2 = gsap.timeline();
+export const t3 = gsap.timeline();
 export default function useMenuAnimation() {
-  const menuRef = ref<Object | null>(null);
-  const menuListRef = ref<Object | null>(null);
-  onMounted(() => {
-    createMenuOpacity(menuRef.value);
-    createMenuListShape(menuListRef.value);
-  });
-  function createMenuOpacity(target: gsap.TweenTarget) {
-    t1.fromTo(target, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+  // 记录上一次操作的dom
+  const previousDom = ref<gsap.TweenTarget>();
+  // 点击动效 + 添加背景色
+  function animateClickEffect(dom: any) {
+    t1.to(dom, { scale: 0.8, duration: 0.2 }); // 先缩小
+    t1.to(dom, { scale: 1, duration: 0.2 }); // 在复原
+    previousDom.value &&
+      t2.to(previousDom.value, {
+        background: "radial-gradient(#ccc 0px, #FFF 0%)",
+        duration: 1.5,
+      }); // 背景颜色消失
+    t3.to(dom, {
+      background: "radial-gradient(#ccc 50px, #FFF 50%)",
+      duration: 1.5,
+    }); // 背景颜色 变大 从圆形
+    previousDom.value = dom;
   }
-  function createMenuListShape(target: gsap.TweenTarget) {
-    t1.fromTo(
-      target,
-      { clipPath: "circle(0%)" },
-      { clipPath: "circle(50%)", duration: 1 },
-    );
-    t1.fromTo(target, {}, { width: "50%", clipPath: "none", duration: 0.5 });
-  }
-  return { menuRef, menuListRef };
+  return { animateClickEffect, previousDom };
 }
