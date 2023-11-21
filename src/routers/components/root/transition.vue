@@ -36,7 +36,7 @@ function onEnter(el: gsap.TweenTarget, done: () => void) {
     { scale: 0.85 },
     {
       scale: 1,
-      duration: 1,
+      duration: 0.6,
       delay: 0.1,
       onComplete() {
         done();

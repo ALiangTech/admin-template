@@ -10,13 +10,13 @@ export default function useMenuAnimation() {
   const previousDom = ref<gsap.TweenTarget>();
   // 点击动效 + 添加背景色
   function animateClickEffect(dom: any) {
-    t1.to(dom, { scale: 0.8, duration: 0.2 }); // 先缩小
-    t1.to(dom, { scale: 1, duration: 0.2 }); // 在复原
     previousDom.value &&
       t2.to(previousDom.value, {
         background: "radial-gradient(#ccc 0px, #FFF 0%)",
-        duration: 1.5,
+        duration: 1,
       }); // 背景颜色消失
+    t1.to(dom, { scale: 0.8, duration: 0.2 }); // 先缩小
+    t1.to(dom, { scale: 1, duration: 0.2 }); // 在复原
     t3.to(dom, {
       background: "radial-gradient(#ccc 150px, #FFF 50%)",
       duration: 1.5,
