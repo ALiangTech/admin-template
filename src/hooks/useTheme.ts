@@ -24,14 +24,14 @@ interface customThemeVars {
 }
 
 const customLight: customThemeVars = {
-  menuItemBgColor: "#BBBBBB70",
+  menuItemBgColor: "#cccccc30",
   menuItemActiveTextColor: "#fff",
   menuItemActiveBgColor: "rgba(24, 160, 88, 0.1)",
 };
 const customDark: customThemeVars = {
-  menuItemBgColor: "#fff",
+  menuItemBgColor: "#cccccc30",
   menuItemActiveTextColor: "#18A058FF",
-  menuItemActiveBgColor: "rgba(24, 160, 88, 0.1)",
+  menuItemActiveBgColor: "rgba(24, 160, 88, 0.5)",
 };
 
 const osThemeRef = useOsTheme();
@@ -42,7 +42,7 @@ export function switchTheme() {
 }
 export function useCustomThemeVars() {
   return computed(() => {
-    return osThemeRef.value === "dark" ? customDark : customLight;
+    return theme.value ? customDark : customLight;
   });
 }
 export default function useTheme() {
