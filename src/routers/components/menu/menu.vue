@@ -1,14 +1,23 @@
 <template>
-  <section class="py-7px" :style="[styleCssVariables, naiveThemeStyle]">
+  <section :style="[styleCssVariables, naiveThemeStyle]" class="mt-8px">
     <nav class="w-60% m-auto">
-      <ol class="flex list-none m0 p0 gap-2">
+      <ol class="flex list-none m0 p0">
         <template v-for="item of props.menuList" :key="item.routeName">
-          <li
-            class="flex flex-col items-center w-80px cursor-pointer p-2 menu-item-bg-color border-rd-4px hover:translate-y--8px"
-            @click="navigateToRoute({ path: item.path })"
-          >
-            <component :is="icons.get(item.icon)"></component>
-            <span class="scale-70">{{ item.label }}</span>
+          <li class="hover:translate-y--8px">
+            <div
+              class="flex flex-col items-center py-2 px-4 cursor-pointer menu-item-bg-color border-rd-4px scale-85"
+              @click="
+                ($event) => {
+                  animateClickEffect($event.currentTarget as Element);
+                  navigateToRoute({ path: item.path });
+                }
+              "
+            >
+              <component :is="icons.get(item.icon)"></component>
+              <div>
+                <span class="text-12px text-nowrap">{{ item.label }}</span>
+              </div>
+            </div>
           </li>
         </template>
       </ol>
@@ -22,6 +31,7 @@ import { useRouterForMenu } from "./useRouter";
 import { useIcons } from "./icons";
 import { useCustomThemeVars } from "@/hooks";
 import { computed } from "vue";
+import useMenuAnimation from "./useAnimation";
 const props = defineProps<MenuComponent.Props>();
 const { navigateToRoute } = useRouterForMenu();
 const icons = useIcons();
@@ -31,6 +41,7 @@ const naiveThemeStyle = computed(() => {
     backgroundColor: naiveThemeVars.value?.common.baseColor,
   };
 });
+const { animateClickEffect } = useMenuAnimation();
 </script>
 <style scoped>
 .menu-item-bg-color {
