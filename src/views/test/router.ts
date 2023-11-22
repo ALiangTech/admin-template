@@ -7,8 +7,8 @@ export const login: RouteRecordRaw = {
   meta: {
     code: "xx",
     menu: {
-      label: "test1",
-      icon: "MenuGrapht",
+      label: "测试管理",
+      icon: "MenuGraph",
     },
   },
   component: Test,

@@ -1,7 +1,9 @@
 import type { GlobalThemeOverrides } from "naive-ui";
 import { NConfigProvider, useOsTheme, darkTheme } from "naive-ui";
 import type { BuiltInGlobalTheme } from "naive-ui/es/themes/interface";
+import type { StyleValue } from "vue";
 import { computed, onMounted, ref } from "vue";
+import { toKebabCase } from "@/utils";
 const lightThemeOverrides: GlobalThemeOverrides = {
   common: {
     // primaryColor: '#000000'
@@ -9,6 +11,7 @@ const lightThemeOverrides: GlobalThemeOverrides = {
   // ...
 };
 
+// naive-ui 变量覆盖
 const darkThemeOverrides: GlobalThemeOverrides = {
   common: {
     // primaryColor: '#FFFFFF'
@@ -18,39 +21,78 @@ const darkThemeOverrides: GlobalThemeOverrides = {
 
 // naive-ui 给的主题变量不够用 故自定义一套
 interface customThemeVars {
-  menuItemBgColor: string; // 菜单项背景颜色
-  menuItemActiveTextColor: string; // 菜单激活的文字颜色
-  menuItemActiveBgColor: string; // 菜单激活的文字颜色
+  menu: {
+    itemBgColor: string; // 菜单项背景色
+    itemActiveBgColor: string; // 被激活的菜单背景色
+    itemTextColor: string; // 菜单文字颜色
+  };
+  menuItemBgColor?: string; // 菜单项背景颜色
+  menuItemActiveTextColor?: string; // 菜单激活的文字颜色
+  menuItemActiveBgColor?: string; // 菜单激活的文字颜色
 }
+type customThemeVarsKey = keyof customThemeVars;
 
 const customLight: customThemeVars = {
-  menuItemBgColor: "#cccccc30",
-  menuItemActiveTextColor: "#fff",
-  menuItemActiveBgColor: "rgba(24, 160, 88, 0.1)",
+  menu: {
+    itemBgColor: "#ccc",
+    itemActiveBgColor: "#ccc",
+    itemTextColor: "#ccc",
+  },
 };
 const customDark: customThemeVars = {
-  menuItemBgColor: "#cccccc30",
-  menuItemActiveTextColor: "#18A058FF",
-  menuItemActiveBgColor: "rgba(24, 160, 88, 0.5)",
+  menu: {
+    itemBgColor: "#fff",
+    itemActiveBgColor: "#fff",
+    itemTextColor: "#fff",
+  },
 };
 
-const osThemeRef = useOsTheme();
-export const theme = ref<BuiltInGlobalTheme | null>(null);
+const osThemeRef = useOsTheme(); // 获取系统默认主题 dark or light
+export const naiveThemeVars = ref<BuiltInGlobalTheme | null>(null);
 /* 切换theme 主题 */
 export function switchTheme() {
-  theme.value = theme.value ? null : darkTheme;
+  naiveThemeVars.value = naiveThemeVars.value ? null : darkTheme;
 }
-export function useCustomThemeVars() {
-  return computed(() => {
-    return theme.value ? customDark : customLight;
+export function useCustomThemeVars(moduleName: customThemeVarsKey) {
+  const customeThemeVars = computed(() => {
+    return naiveThemeVars.value
+      ? customDark[moduleName]
+      : customLight[moduleName];
   });
-}
-export default function useTheme() {
-  const themeOverrides = computed(() =>
-    theme.value === null ? lightThemeOverrides : darkThemeOverrides,
+  /** 将themeVars 变量绑定到style 作为css变量 */
+  function objectToCSSVariables(data: Object, prefix: string) {
+    let cssVars: any = {};
+    Object.entries(data).forEach(([key, value]) => {
+      const cssVarsKey = `--x-${prefix}-${toKebabCase(key)}`;
+      cssVars[cssVarsKey] = value;
+    });
+    return cssVars;
+  }
+  const styleCssVariables = computed<StyleValue>(() => {
+    const data = customeThemeVars.value;
+    return objectToCSSVariables(data as Object, moduleName);
+  });
+  const naiveThemeOverrides = computed(() =>
+    naiveThemeVars.value === null ? lightThemeOverrides : darkThemeOverrides,
   );
   onMounted(() => {
-    theme.value = osThemeRef.value === "dark" ? darkTheme : null;
+    naiveThemeVars.value = osThemeRef.value === "dark" ? darkTheme : null;
   });
-  return { NConfigProvider, theme, themeOverrides, switchTheme };
+  return {
+    customeThemeVars,
+    styleCssVariables,
+    naiveThemeOverrides,
+    naiveThemeVars,
+    switchTheme,
+  };
+}
+
+export default function useTheme() {
+  const themeOverrides = computed(() =>
+    naiveThemeVars.value === null ? lightThemeOverrides : darkThemeOverrides,
+  );
+  onMounted(() => {
+    naiveThemeVars.value = osThemeRef.value === "dark" ? darkTheme : null;
+  });
+  return { NConfigProvider, naiveThemeVars, themeOverrides, switchTheme };
 }

@@ -6,6 +6,7 @@ interface CreateMenuDataParams {
 }
 type Map = CreateMenuDataParams;
 export interface Menu {
+  path: string;
   routeName: RouteRecordRaw["name"];
   label: string;
   icon?: string | null;
@@ -16,8 +17,8 @@ export default function createMenuData({ routes }: CreateMenuDataParams) {
   function mapRoutes({ routes }: Map) {
     return routes
       .map((route) => {
-        const { meta, name, children = [] } = route;
-        const temp: Menu = { routeName: name, children: [], label: "" };
+        const { meta, name, children = [], path } = route;
+        const temp: Menu = { routeName: name, children: [], label: "", path };
         if (meta?.menu) {
           const { label, icon } = meta.menu;
           temp.label = label;

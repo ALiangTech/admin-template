@@ -7,7 +7,7 @@ export const users: RouteRecordRaw = {
     code: "xx",
     menu: {
       label: "用户管理",
-      icon: "MenuGrapht",
+      icon: "MenuGraph",
     },
   },
   component: () => import("./index.vue"),

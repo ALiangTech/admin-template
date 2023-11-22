@@ -8,15 +8,16 @@
       </router-view>
     </template>
     <template #menu>
-      <Menu></Menu>
+      <Menu :menu-list="menu"></Menu>
     </template>
   </Layout>
 </template>
 
 <script setup lang="ts">
-import Menu from "@/routers/components/menu/index";
+import Menu from "@/routers/components/menu/menu.vue";
 import Layout from "./layout.vue";
 import RouterTransition from "./transition.vue";
+import { menu } from "@/routers";
 defineOptions({
   name: "RootPage",
 });

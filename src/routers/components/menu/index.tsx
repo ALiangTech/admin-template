@@ -74,9 +74,9 @@ function isSameRoute(currentRoute:RouteLocationNormalizedLoaded,routeName: strin
  */
 function createHighLightBgStyle(currentRoute:RouteLocationNormalizedLoaded,routeName: string) {
   if(isSameRoute(currentRoute, routeName)) {
-    return { 'background': `var(--c-menu-item-active-color)`}
+    return { 'background': `radial-gradient(var(--c-menu-item-active-color) 50px, #FFF 50%)`}
   }
-  return { background: 'var(--c-menu-item-bg-color)'}
+  return {}
 }
 
 /**  
@@ -112,7 +112,7 @@ export default defineComponent({
         },
         class: {
           "text-4": "text-4",
-          "scale-70": "scale-70",
+          "scale-80": "scale-80",
           'select-none': "select-none",
         }
       }, {
@@ -163,6 +163,7 @@ export default defineComponent({
                 'cursor-pointer': 'cursor-pointer',
                 'border-rd-4px':'border-rd-4px',
               },
+              // style: createHighLightBgStyle(route, routeName as string),
               style: {
                 ...createHighLightBgStyle(route, routeName as string)
               },
@@ -176,6 +177,9 @@ export default defineComponent({
               'justify-center': 'justify-center',
               'items-center': 'items-center',
             },
+            style: {
+              "box-shadow": "1px 0px 5px 1px #ccc"
+            }
           }, [labelVnode]); // create({ menu: children }) // 二级菜单暂时不渲染
         });
       }
@@ -188,14 +192,14 @@ export default defineComponent({
     })
     return () => {
       return (
-        <section class="flex justify-center items-center h-64px py-2 overflow-hidden" id="menu" style={
+        <section class="flex justify-center items-center h-64px" id="menu" style={
          {
           "background-color":themeVars.value.baseColor,
           '--c-menu-item-bg-color': customThemesVars.value.menuItemBgColor,
           '--c-menu-item-active-color': customThemesVars.value.menuItemActiveBgColor,
          }
         }>
-          <div class="flex w-50% overflow-hidden gap-2">
+          <div class="flex w-50% overflow-hidden gap-2 py-2">
             {menuTree}
           </div>
         </section>
