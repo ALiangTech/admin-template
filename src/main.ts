@@ -1,14 +1,16 @@
-import type { App } from "vue";
-import { createApp } from "vue";
 import "@unocss/reset/normalize.css";
 import "virtual:uno.css";
 import "./style.css";
+import { createApp } from "vue";
+import type { App } from "vue";
 import APP from "./App.vue";
 import { MountRouterToApp } from "./routers";
 import { registerPermission } from "./plugins";
+import registerGlobalComponents from "@/components";
 
 const app: App = createApp(APP);
 
+registerGlobalComponents(app);
 // 路由挂载
 MountRouterToApp(app).then();
 

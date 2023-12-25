@@ -20,6 +20,16 @@
 import { gsap } from "gsap";
 import { watchEffect, nextTick, ref } from "vue";
 import { vElementSize } from "@vueuse/components";
+const props = withDefaults(defineProps<Props>(), {
+  list: () => [
+    { label: "用用户", value: "accounts" },
+    { label: "角角色色", value: "roles" },
+  ],
+});
+const emits = defineEmits(["update:modelValue", "change"]);
+defineOptions({
+  name: "ZSlideTabs",
+});
 interface ListItem {
   label: string;
   value: number | string;
@@ -28,13 +38,6 @@ interface Props {
   list: ListItem[];
   modelValue: number | string;
 }
-const props = withDefaults(defineProps<Props>(), {
-  list: () => [
-    { label: "用用户", value: "accounts" },
-    { label: "角角色色", value: "roles" },
-  ],
-});
-const emits = defineEmits(["update:modelValue", "change"]);
 // 设置当前选中的值
 function handerClick(value: string | number) {
   emits("update:modelValue", value);

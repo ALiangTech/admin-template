@@ -10,12 +10,10 @@ declare module 'vue' {
     NButton: typeof import('naive-ui')['NButton']
     NDrawer: typeof import('naive-ui')['NDrawer']
     NDrawerContent: typeof import('naive-ui')['NDrawerContent']
-    NForm: typeof import('naive-ui')['NForm']
-    NFormItem: typeof import('naive-ui')['NFormItem']
-    NInput: typeof import('naive-ui')['NInput']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ZSlideMenus: typeof import('./src/components/z-slide-menus/index.vue')['default']
     ZSlideTabs: typeof import('./src/components/z-slide-tabs/index.vue')['default']
+    ZTheme: typeof import('./src/components/z-theme/index.vue')['default']
   }
 }

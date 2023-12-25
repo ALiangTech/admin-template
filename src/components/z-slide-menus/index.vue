@@ -19,7 +19,7 @@ import useFirstRouter from "@/hooks/useFirstRoute";
 import { ref } from "vue";
 const props = defineProps<Props>();
 defineOptions({
-  name: "Users",
+  name: "ZSlideMenus",
 });
 interface Props {
   routeName: string;
