@@ -1,5 +1,5 @@
 <template>
-  <section :style="[styleCssVariables, naiveThemeStyle]" class="pt-16px">
+  <section class="pt-16px">
     <img :src="LogoSrc" class="w-200px h-48px object-contain" alt="logo图片" />
     <nav class="pt-16px">
       <ol class="list-none m0 p0">
@@ -24,22 +24,9 @@
 <script setup lang="ts">
 import type { MenuComponent } from "./menu";
 import { useRouterForMenu } from "./useRouter";
-import { useCustomThemeVars } from "@/hooks";
-import { computed } from "vue";
 import useMenuAnimation from "./useAnimation";
 import LogoSrc from "@/assets/logo.png";
 const props = defineProps<MenuComponent.Props>();
 const { navigateToRoute } = useRouterForMenu();
-const { styleCssVariables, naiveThemeVars } = useCustomThemeVars("menu");
-const naiveThemeStyle = computed(() => {
-  return {
-    backgroundColor: naiveThemeVars.value?.common.baseColor,
-  };
-});
 const { animateClickEffect } = useMenuAnimation();
 </script>
-<style scoped>
-.menu-item-bg-color {
-  background-color: var(--x-menu-item-bg-color);
-}
-</style>

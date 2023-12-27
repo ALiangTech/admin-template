@@ -1,11 +1,10 @@
 <template>
   <section>
     accounts
-    <button @click="switchTheme">switch</button>
+    <button>switch</button>
   </section>
 </template>
 <script setup lang="ts">
-import { switchTheme } from "@/hooks/useTheme";
 defineOptions({
   name: "UserAccounts",
 });
